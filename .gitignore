@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Log files
+*.log
+
+# Environment variables
+.env
+
+# IDE settings
+.vscode/
+
+# unuse files
+
+temp.html
+mysql.txt
+git commands.txt
