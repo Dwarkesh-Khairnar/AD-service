@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import vite from '../assets/react.svg'
 
 
 function Hero({ onSubmit }) {
@@ -13,13 +14,9 @@ function Hero({ onSubmit }) {
   };
 
   return (
-    <section className=" p-2 bg-cyan-600 text-center mb-2">
-      <h2>Hero Section 🚀</h2>
-      <form onSubmit={handleSubmit} className=" flex justify-center gap-1 mt-1">
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <button type="submit">Send</button>
-      </form>
+    <section className=" bg-teal-300 text-center mb-2 h-screen overflow-hidden">
+     <div className=" bg-amber-400 h-72 w-[230%] mt-44 -ml-56 -rotate-45 md:h-[80%] md:-ml-[50%] md:mt-96 md:rotate-45 "></div>
+    <img src={vite} alt="" />;
     </section>
   );
 }
