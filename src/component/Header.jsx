@@ -81,14 +81,15 @@ function Header() {
       <header className="bg-white p-3 px-3 flex justify-between items-center -mb-16">
         <div>Logo</div>
         <div>
-          <ul className="flex gap-4">
-            <li className="hidden md:block hover:text-red-600">  <Link to="/">Home</Link></li>
-            <li className="hidden md:block hover:text-red-600">  <Link to="/services">Services</Link></li>
-            <li className="hidden md:block hover:text-red-600">  <Link to="/plans">Plans</Link></li>
-            <li className="hidden md:block hover:text-red-600">  <Link to="/schedule">Schedule Meeting</Link></li>
+          <ul className="flex gap-3">
+            <li className="z-10 hidden md:block hover:text-red-600"><Link to="/">Home</Link></li>
+            <li className="z-10 hidden md:block hover:text-red-600"><Link to="/services">Services</Link></li>
+            <li className="z-10 hidden md:block hover:text-red-600"><Link to="/plans">Plans</Link></li>
+            {/* <li className="z-10 hidden md:block hover:text-red-600"><Link to="/placeholder">########</Link></li> */}
+            <li className="z-10 hidden md:block hover:text-red-600"><Link to="/schedule">Schedule Meeting</Link></li>
           </ul>
         </div>
-        <div className="flex">
+        <div className="flex z-10">
           <button
             className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">+New
           </button>
