@@ -25,22 +25,22 @@ function Header() {
         <div>Logo</div>
         <div>
           <ul className="flex gap-3">
-            <li className="z-10 hidden md:block hover:text-red-600">
+            <li className="z-50 hidden md:block hover:text-red-600">
               <Link to="/">Home</Link>
             </li>
-            <li className="z-10 hidden md:block hover:text-red-600">
+            <li className="z-50 hidden md:block hover:text-red-600">
               <Link to="/services">Services</Link>
             </li>
-            <li className="z-10 hidden md:block hover:text-red-600">
+            <li className="z-50 hidden md:block hover:text-red-600">
               <Link to="/plans">Plans</Link>
             </li>
-            {/* <li className="z-10 hidden md:block hover:text-red-600"><Link to="/placeholder">########</Link></li> */}
-            <li className="z-10 hidden md:block hover:text-red-600">
+            {/* <li className="z-50 hidden md:block hover:text-red-600"><Link to="/placeholder">########</Link></li> */}
+            <li className="z-50 hidden md:block hover:text-red-600">
               <Link to="/schedule">Schedule Meeting</Link>
             </li>
           </ul>
         </div>
-        <div className="flex z-10">
+        <div className="flex z-50">
           <button className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">
             +New
           </button>
@@ -50,9 +50,7 @@ function Header() {
             aria-expanded={visible}
             aria-controls="sidenav"
           >
-            {/* { svg ?( */}
             {svgs[svg]}
-            {/* // )} */}
           </div>
         </div>
       </header>
@@ -61,31 +59,18 @@ function Header() {
         id="sidenav"
         className={`top-0 transition-opacity duration-900 ease-in-out ${
           visible ? "opacity-100 h-auto" : "opacity-0 h-0 pointer-events-none"
-        } overflow-hidden `}
+        } overflow `}
       >
-        <div className=" absolute end-0 w-3/4 h-screen bg-amber-400">
+        <div className=" absolute end-0 w-3/4 h-screen bg-amber-400 z-10">
           <h4 className="my-4 ml-5">Ad</h4>
           <hr className="text-blue-100" />
 
-          <ul className="m-20 w-full">
-            <li className="my-4 hover:text-red-600 ">
-              {" "}
-              <Link to="/">Home</Link>
-            </li>
-            <li className="my-4 hover:text-red-600 text-amber-50">
-              <Link to="/services">Services</Link>
-            </li>
-            <li className="my-4 hover:text-red-600">
-              {" "}
-              <Link to="/plans">Plans</Link>
-            </li>
-            <li className="my-4 hover:text-red-600 text-amber-50">
-              <Link to="/placeholder">########</Link>
-            </li>
-            <li className="my-4 hover:text-red-600">
-              {" "}
-              <Link to="/schedule">Schedule Meeting</Link>
-            </li>
+          <ul className="m-20 w-full"> 
+              <li className="my-4 hover:text-red-600 "> {" "} <Link to="/">Home</Link> </li> 
+              <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/services">Services</Link> </li> 
+              <li className="my-4 hover:text-red-600"> {" "} <Link to="/plans">Plans</Link> </li> 
+              <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/placeholder">########</Link> </li> 
+              <li className="my-4 hover:text-red-600"> {" "} <Link to="/schedule">Schedule Meeting</Link> </li>
           </ul>
           <hr className="text-blue-100" />
           <ul className="ml-20 mt-10">
