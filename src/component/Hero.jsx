@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import vite1 from "../assets/man_see_the_wall.svg"
+import Hero_svg from "../assets/man_see_the_wall.svg"
 
 function Hero({ onSubmit }) {
   const [name, setName] = useState("");
@@ -13,13 +13,14 @@ function Hero({ onSubmit }) {
   };
 
   return (
-    <section className=" bg-teal-300 text-center mb-2 h-screen overflow-hidden">
+    <section className=" bg-teal-300 text-center mb-2 h-screen overflow-hidden justify-center">
      <div className=" bg-amber-400 h-72 w-[230%] mt-44 -ml-60 -rotate-45 md:h-[80%] md:-ml-[50%] md:mt-96 md:rotate-45">
     <h4 className=" absolute top-100 start-50 font-bold text-6xl text-white mask-linear-from-amber-700 w-2x1 mix-blend-color rotate-45  md:w-3x1 md:">WE ARE AD SARVICE PROVADER</h4>
-    <h4 className=" absolute rotate-45 md:-rotate-45 font-bold text-6xl w-2x1 text-teal-600 mix-blend-color " style={{top:'20%',left:'20%'}}>WE ARE AD SARVICE PROVADER</h4>
-    <p className=" absolute bottom-1  -rotate-45 ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum pariatur sapiente accusamus, quo voluptate iusto deserunt cum iure! Esse ipsam repellat porro, tempora facere tempore dolores repudiandae iure tenetur quia! Ea voluptatum aliquam consequatur expedita unde harum architecto ratione ipsa.</p>
+    <h4 className=" absolute w-1/3 font-bold text-5xl top-[-20%] start-[50%] text-teal-600 mix-blend-color rotate-45 md:-rotate-45 md:text-6xl md:top-[20%] md:start-[18%]" style={{}}>WE ARE AD SARVICE PROVADER</h4>
     </div>
-    <img src={vite1} alt="" className=" absolute top-90 w-60 end-17 md:w-100" />;
+    <p className=" absolute start-10 top-70 w-[80%] md:top-80 md:w-[53%] md:start-1/8">At x.ads, we provide innovative ad services designed to boost your brand's visibility. Our expert team crafts tailored strategies that engage your audience and maximize results. Let us elevate your advertising experience!.</p>
+    <button className=" absolute start-[38%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">Get Start</button>
+    <img src={Hero_svg} alt="" className="absolute top-1/ end-2/12 w-60 md:top-90 md:end-17 md:w-100" />;
     </section>
   );
 }
