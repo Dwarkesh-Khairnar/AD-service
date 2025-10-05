@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-white p-3 px-3 flex justify-between items-center -mb-16">
+      <header className="bg-white p-2 pr-3 flex justify-between items-center -mb-16 ">
         <div>Logo</div>
         <div>
           <ul className="flex gap-3">
@@ -57,11 +57,11 @@ function Header() {
 
       <div
         id="sidenav"
-        className={`top-0 transition-opacity duration-900 ease-in-out ${
+        className={`top-0 transition-opacity duration-200 ease-in-out ${
           visible ? "opacity-100 h-auto" : "opacity-0 h-0 pointer-events-none"
         } overflow `}
       >
-        <div className=" absolute end-0 w-3/4 h-screen bg-amber-400 z-10">
+        <div className=" absolute end-0 w-3/4 h-screen bg-amber-400 z-10 border-l-1 border-white">
           <h4 className="my-4 ml-5">Ad</h4>
           <hr className="text-blue-100" />
 
