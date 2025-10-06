@@ -61,7 +61,7 @@ function Header() {
           visible ? "opacity-100 h-auto" : "opacity-0 h-0 pointer-events-none"
         } overflow `}
       >
-        <div className=" absolute end-0 w-3/4 h-screen bg-amber-400 z-10 border-l-1 border-white">
+        <div className=" absolute end-0 w-3/4 h-full bg-amber-400 z-10 border-l-1 border-white">
           <h4 className="my-4 ml-5">Ad</h4>
           <hr className="text-blue-100" />
 
@@ -69,8 +69,8 @@ function Header() {
               <li className="my-4 hover:text-red-600 "> {" "} <Link to="/">Home</Link> </li> 
               <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/services">Services</Link> </li> 
               <li className="my-4 hover:text-red-600"> {" "} <Link to="/plans">Plans</Link> </li> 
-              <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/placeholder">########</Link> </li> 
-              <li className="my-4 hover:text-red-600"> {" "} <Link to="/schedule">Schedule Meeting</Link> </li>
+              <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/placeholder">Schedule Meeting</Link> </li> 
+              <li className="my-4 hover:text-red-600"> {" "} <Link to="/schedule">Ragistration</Link> </li>
           </ul>
           <hr className="text-blue-100" />
           <ul className="ml-20 mt-10">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Hero_svg from "../assets/man_see_the_wall.svg"
+import Hero_svg from "../assets/man_see_the_wall.svg";
 
 function Hero({ onSubmit }) {
   const [name, setName] = useState("");
@@ -13,15 +13,38 @@ function Hero({ onSubmit }) {
   };
 
   return (
-    <section className=" bg-teal-300 text-center mb-2 h-screen overflow-hidden justify-center">
-     <div className=" bg-amber-400 h-72 w-[230%] mt-44 -ml-60 -rotate-45 md:h-[80%] md:-ml-[50%] md:mt-96 md:rotate-45">
-    <h4 className=" absolute top-100 start-50 font-bold text-6xl text-white mask-linear-from-amber-700 w-2x1 mix-blend-color rotate-45  md:w-3x1 md:">WE ARE AD SARVICE PROVADER</h4>
-    <h4 className=" absolute w-1/3 font-bold text-5xl top-[-20%] start-[50%] text-teal-600 mix-blend-color rotate-45 md:-rotate-45 md:text-6xl md:top-[20%] md:start-[18%]" style={{}}>WE ARE AD SARVICE PROVADER</h4>
-    </div>
-    <p className=" absolute start-10 top-70 w-[80%] md:top-80 md:w-[53%] md:start-1/8">At x.ads, we provide innovative ad services designed to boost your brand's visibility. Our expert team crafts tailored strategies that engage your audience and maximize results. Let us elevate your advertising experience!.</p>
-    <button className=" absolute start-[38%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">Get Start</button>
-    <img src={Hero_svg} alt="" className="absolute top-1/ end-2/12 w-60 md:top-90 md:end-17 md:w-100" />;
-    </section>
+    <>
+      <section className=" bg-teal-300 text-center mb-2 h-screen overflow-hidden justify-center">
+        <div className=" bg-amber-400 h-72 w-[230%] mt-44 -ml-60 -rotate-45 md:h-[80%] md:-ml-[50%] md:mt-96 md:rotate-45">
+          <h4 className=" absolute top-100 start-50 font-bold text-6xl text-white mask-linear-from-amber-700 w-2x1 mix-blend-color rotate-45  md:w-3x1 md:">
+            WE ARE AD SARVICE PROVADER
+          </h4>
+          <h4 className=" absolute w-1/3 font-bold text-5xl top-[-20%] start-[50%] text-teal-600 mix-blend-color rotate-45 md:-rotate-45 md:text-6xl md:top-[20%] md:start-[18%]">
+            WE ARE AD SARVICE PROVADER
+          </h4>
+        </div>
+        <p className=" absolute text-emerald-700 start-10 top-70 w-[80%] md:top-80 md:w-[53%] md:start-1/8 mix-blend-color">
+          At x.ads, we provide innovative ad services designed to boost your
+          brand's visibility. Our expert team crafts tailored strategies that
+          engage your audience and maximize results. Let us elevate your
+          advertising experience!.
+        </p>
+        <button className=" absolute start-[38%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">
+          Get Start
+        </button>
+        <img
+          src={Hero_svg}
+          alt=""
+          className="absolute top-1/ end-2/12 w-60 md:top-90 md:end-17 md:w-100"
+        />
+        ;
+      </section>
+      <section>
+      <div className=" bg-amber-400 h-screen w-screen overflow-x-hidden"></div>
+      
+        <div className=" relative bg-teal-300 h-72 w-[230%] -top-120 -ml-60 rotate- md:h-[80%] md:-ml-[50%] md:mt-96 "></div>
+      </section>
+    </>
   );
 }
 
@@ -38,6 +61,5 @@ const handleHeroSubmit = async (data) => {
     setResponse("Error sending data ❌");
   }
 };
-
 
 export default Hero;
