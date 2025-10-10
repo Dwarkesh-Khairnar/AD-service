@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Hero_svg from "../assets/man_see_the_wall.svg";
+import { Link } from "react-router-dom";
 
 function Hero({ onSubmit }) {
   const [name, setName] = useState("");
@@ -30,7 +31,7 @@ function Hero({ onSubmit }) {
           advertising experience!.
         </p>
         <button className=" absolute start-[38%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">
-          Get Start
+          <Link rel="stylesheet" to="/plans">Get Start</Link> 
         </button>
         <img
           src={Hero_svg}
@@ -40,9 +41,9 @@ function Hero({ onSubmit }) {
         ;
       </section>
       <section>
-      <div className=" bg-amber-400 h-screen w-screen overflow-x-hidden"></div>
-      
-        <div className=" relative bg-teal-300 h-72 w-[230%] -top-120 -ml-60 rotate- md:h-[80%] md:-ml-[50%] md:mt-96 "></div>
+      <div className=" bg-amber-400 h-screen w-screen overflow-y-hidden">
+        <div className=" absolute z-10 bg-teal-300 h-72 w-[230%] top-269 start-0 rotate-50 md:h-[80%] md:-ml-[50%] md:mt-96 "></div>
+        </div>
       </section>
     </>
   );
