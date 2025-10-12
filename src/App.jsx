@@ -4,8 +4,6 @@ import Header from "./component/Header";
 import Hero from "./component/Hero";
 import Schedule from "./component/Schedule"; // Assuming you have this component
 import Services from "./component/Services"; // Example component for services
-import Plans from "./component/Plans"; // Example component for plans
-import Dashboard from "./component/Dashboard"; // Example component for dashboard
 
 function App() {
   const [response, setResponse] = useState("");
