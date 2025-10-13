@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Router components
 import Header from "./component/Header";
 import Hero from "./component/Hero";
-import Schedule from "./component/Schedule"; // Assuming you have this component
-import Services from "./component/Services"; // Example component for services
+import Schedule from "./component/Schedule";
+import Plans from "./component/Plans";
+import Services from "./component/Services";
+import Client from "./sub_components/Client_m_form.jsx";
+import Sales from "./sub_components/sales_m_form.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -37,7 +40,9 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/schedule" element={<Schedule />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/client" element={<Client />} />
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           {/* Add more routes as needed */}
         </Routes>
       </div>
