@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-white p-2 pr-3 flex justify-between items-center -mb-16">
+      <header className="bg-white p-2 pr-3 flex justify-between items-center -mb-16 border-b-2">
         <div>Logo</div>
         <div>
           <ul className="flex gap-3">
@@ -66,15 +66,15 @@ function Header() {
           <hr className="text-blue-100" />
 
           <ul className="m-20 w-full"> 
-              <li className="my-4 hover:text-red-600 "> {" "} <Link to="/">Home</Link> </li> 
-              <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/services">Services</Link> </li> 
-              <li className="my-4 hover:text-red-600"> {" "} <Link to="/plans">Plans</Link> </li> 
-              <li className="my-4 hover:text-red-600 text-amber-50"> <Link to="/schedule">Schedule Meeting</Link> </li> 
-              <li className="my-4 hover:text-red-600"> {" "} <Link to="/#">Ragistration</Link> </li>
+              <li className="my-4 hover:text-red-600 "                onClick={toggleSidenav}> <Link to="/">Home</Link> </li> 
+              <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/services">Services</Link> </li> 
+              <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/plans">Plans</Link> </li> 
+              <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/schedule">Schedule Meeting</Link> </li> 
+              <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/#">Ragistration</Link> </li>
           </ul>
           <hr className="text-blue-100" />
           <ul className="ml-20 mt-10">
-            <li className="text-amber-50 hover:text-red-600">
+            <li className="text-amber-50 hover:text-red-600"onClick={toggleSidenav}>
               {" "}
               <Link to="/dashboard">Dashboard</Link>
             </li>
