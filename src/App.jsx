@@ -6,7 +6,7 @@ import Schedule from "./component/Schedule";
 import Plans from "./component/Plans";
 import Services from "./component/Services";
 import Client from "./sub_components/Client_m_form.jsx";
-import Sales from "./sub_components/sales_m_form.jsx";
+import Meetjoin from "./sub_components/join.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -40,7 +40,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/schedule" element={<Schedule />} />
-          <Route path="/sales" element={<Sales />} />
+          <Route path="/meetjoin" element={<Meetjoin />} />
           <Route path="/client" element={<Client />} />
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           {/* Add more routes as needed */}
