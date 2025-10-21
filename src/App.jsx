@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Router components
 import Header from "./component/Header";
 import Hero from "./component/Hero";
@@ -7,9 +7,22 @@ import Plans from "./component/Plans";
 import Services from "./component/Services";
 import Client from "./sub_components/Client_m_form.jsx";
 import Meetjoin from "./sub_components/join.jsx";
+import Loding from "./sub_components/loding.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a data loading operation
+    const loadData = async () => {
+      // Simulating a delay (e.g., fetching data)
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // 2 seconds delay
+      setLoading(false); // Set loading to false after data is "loaded"
+    };
+
+    loadData();
+  }, []);
 
   const handleHeroSubmit = async (data) => {
     try {
@@ -26,9 +39,12 @@ function App() {
   };
 
   return (
+
     <Router>
-      {" "}
-      {/* Wrap your application in Router */}
+      {loading ? (
+        <Loding />
+      ) : (
+
       <div style={{ fontFamily: "sans-serif" }}>
         <Header />
         {/* <Hero/> */}
@@ -46,6 +62,7 @@ function App() {
           {/* Add more routes as needed */}
         </Routes>
       </div>
+      )}
     </Router>
   );
 }
