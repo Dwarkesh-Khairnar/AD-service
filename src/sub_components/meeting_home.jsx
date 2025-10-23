@@ -1,19 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Import Router components
+import Meet_form from "../assets/Meet_form.svg"
+import Meet_join from "../assets/Meet_join.svg"
 
 function meeting_home() {
   return (
-    <ul className="gap-3 flex mt-5 ml-5">
-      <li
-        className=" bg-blue-500 p-2 rounded-4xl"
-        // onClick={create_new_meet}
-      >
-        <Link to="/Claint">Meeting requsta</Link>
-      </li>
-      <li className="bg-green-400 p-2 rounded-4xl">
-        <Link to="/Sales">Join Room</Link>
-      </li>
-    </ul>
+    <div className="h-screen w-screen grid justify-center">
+
+   <ul className="gap-13 flex mt-5 h-10">
+          <li
+            className="w-10"
+            // onClick={create_new_meet}
+            >
+            <Link to="/client"><img className="ml-2 h-15 w-12" src={Meet_form} alt="" /></Link>
+            Shedule Meeting
+          </li>
+          <li className=" w-10 ">
+            <Link to="/meetjoin"><img className="ml-2 h-15 w-12" src={Meet_join} alt="" srcset="" /></Link>
+          Join Meeting
+          </li>
+        </ul>
+            </div>
   );
 }
 
