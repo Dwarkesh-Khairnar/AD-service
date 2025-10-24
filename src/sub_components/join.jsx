@@ -1,61 +1,77 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Import Router components
 import Peer from "peerjs";
-import Home from "./meeting_home";
+import Loding from "./loding"; // Loading component
 
-function join() {
+import mic_on from "../assets/mic_on.svg";
+import mic_off from "../assets/mic_off.svg";
+import video_on from "../assets/video_on.svg";
+import video_off from "../assets/video-off.svg";
+
+function Join() {
   const localVideoRef = useRef(null);
   const remoteVideoRef = useRef(null);
   const [peerId, setPeerId] = useState("");
   const [peer, setPeer] = useState(null);
   const [localStream, setLocalStream] = useState(null);
   const [currentCall, setCurrentCall] = useState(null);
-  const [buttonText, setButtonText] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [buttonText, setButtonText] = useState("Video off");
+  const [micText, setMicText] = useState("Mic off");
 
   useEffect(() => {
-    // Create a Peer object
-    const newPeer = new Peer();
-    setPeer(newPeer);
+    const loadData = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulated delay
+      setLoading(false);
 
-    // Display the peer ID
-    newPeer.on("open", (id) => {
-      console.log("My peer ID is: " + id);
-      setPeerId(id);
-    });
+      // Create a Peer object
+      const newPeer = new Peer();
+      setPeer(newPeer);
 
-    // Get local media stream
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        setLocalStream(stream);
-        localVideoRef.current.srcObject = stream;
-
-        // Listen for incoming calls
-        newPeer.on("call", (call) => {
-          call.answer(stream); // Answer the call with the local stream
-          setCurrentCall(call);
-          call.on("stream", (remoteStream) => {
-            remoteVideoRef.current.srcObject = remoteStream; // Show the remote stream
-          });
-        });
-      })
-      .catch((err) => {
-        console.error("Failed to get local stream", err);
+      newPeer.on("open", (id) => {
+        console.log("My peer ID is: " + id);
+        setPeerId(id);
       });
 
-    return () => {
-      newPeer.destroy(); // Clean up the peer connection on component unmount
+      // Get local media stream
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
+        setLocalStream(stream);
+        // Check if localVideoRef is ready before setting srcObject
+        if (localVideoRef.current) {
+          localVideoRef.current.srcObject = stream;
+        }
+
+        newPeer.on("call", (call) => {
+          call.answer(stream); // Answer the call with local stream
+          setCurrentCall(call);
+          call.on("stream", (remoteStream) => {
+            if (remoteVideoRef.current) {
+              remoteVideoRef.current.srcObject = remoteStream; // Show the remote stream
+            }
+          });
+        });
+      } catch (err) {
+        console.error("Failed to get local stream", err);
+        alert(
+          "Could not access the camera/microphone. Please check permissions."
+        );
+      }
     };
+
+    loadData();
   }, []);
-  // const strat=()=> {
-  //     }
 
   const callPeer = () => {
     if (peer && localStream) {
-      const call = peer.call(peerId, localStream); // Call the peer with the local stream
+      const call = peer.call(peerId, localStream);
       setCurrentCall(call);
       call.on("stream", (remoteStream) => {
-        remoteVideoRef.current.srcObject = remoteStream; // Show the remote stream
+        if (remoteVideoRef.current) {
+          remoteVideoRef.current.srcObject = remoteStream; // Show the remote stream
+        }
       });
     }
   };
@@ -63,8 +79,10 @@ function join() {
   const endCall = () => {
     if (currentCall) {
       currentCall.close();
-      remoteVideoRef.current.srcObject = null; // Clear the remote video
-      setCurrentCall(null); // Reset current call
+      if (remoteVideoRef.current) {
+        remoteVideoRef.current.srcObject = null; // Clear the remote video
+      }
+      setCurrentCall(null);
     }
   };
 
@@ -72,7 +90,7 @@ function join() {
     if (localStream) {
       const videoTrack = localStream.getVideoTracks()[0];
       videoTrack.enabled = !videoTrack.enabled; // Toggle video track
-      setButtonText(pre => !pre)
+      setButtonText(videoTrack.enabled ? "Video off" : "Video on");
     }
   };
 
@@ -80,75 +98,81 @@ function join() {
     if (localStream) {
       const audioTrack = localStream.getAudioTracks()[0];
       audioTrack.enabled = !audioTrack.enabled; // Toggle audio track
+      setMicText(audioTrack.enabled ? "Mic off" : "Mic on");
     }
   };
 
-  const create_new_meet = () => {
-    // Create a Peer object
-    console.log("click");
-
-    const newPeer = new Peer();
-    setPeer(newPeer);
-
-    //     // Display the peer ID
-    newPeer.on("open", (id) => {
-      console.log("My peer ID is: " + id);
-      setPeerId(id);
-    });
-  };
   return (
-    <>
-      <div className="flex mt-8 h-7 mx-2.5">
-        <input type="text" className=" border-2" />
-        <button className="px-2 rounded-tr-xl rounded-br-xl bg-green-500 cursor-pointer" onClick={callPeer}>
-          Join
-        </button>
-      </div>
-        <p className="m-2">Your call id:{peerId}</p>
-      <div>
-        <div className="flex my-4">
-          <video
-            ref={localVideoRef}
-            autoPlay
-            muted
-            style={{ width: "500px" }}
-          ></video>
-          <video
-            ref={remoteVideoRef}
-            autoPlay
-            style={{ width: "500px" }}
-          ></video>
+    <div className="bg-amber-100 h-screen">
+      {loading ? (
+        <Loding />
+      ) : (
+        <div className="grid align-middle justify-center pb-3">
+          <p className="mt-8">Enter Meeting ID</p>
+          <div className="flex h-7 mb-2.5">
+            <input
+              type="text"
+              onChange={(e) => setPeerId(e.target.value)}
+              placeholder="Enter peer ID to call"
+              className="border-2"
+            />
+            <button
+              className="px-2 rounded-tr-xl rounded-xl bg-green-500 cursor-pointer ml-2"
+              onClick={callPeer}
+            >
+              Join
+            </button>
+          </div>
+          <p className="mr-2">Your call ID: {peerId}</p>
+          <div className="grid-cols-1 my-4 gap-10 md:flex">
+            <video
+              ref={localVideoRef}
+              autoPlay
+              muted
+              style={{ width: "500px" }}
+            />
+            <video
+              ref={remoteVideoRef}
+              autoPlay
+              style={{ width: "500px" }}
+              className="mt-2 md:m-0"
+            />
+          </div>
+          <div className="flex mt-2 h-10">
+            <button
+              onClick={endCall}
+              className="mx-2 bg-red-600 p-2 rounded-2xl"
+            >
+              End
+            </button>
+
+            <button
+              onClick={toggleVideo}
+              className="mx-2 rounded-2xl h-6 px-2" 
+            >
+              <img
+                className="h-4" 
+                src={buttonText === "Video on" ? video_on : video_off}
+              />
+              <span className="text-sm">{buttonText}</span> 
+
+            </button>
+
+            <button
+              onClick={toggleMic}
+              className="mx-2 rounded-2xl h-6 px-2"
+            >
+              <img
+                className="h-4" 
+                src={micText === "Mic on" ? mic_on : mic_off}
+              />
+              <span className="text-sm">{micText}</span> 
+            </button>
+          </div>
         </div>
-        {/* <input
-          type="text"
-          // value={peerId}
-          onChange={(e) => setPeerId(e.target.value)}
-          placeholder="Enter peer ID to call"
-          className="ml-3 border-1 p-1 "
-        /> */}
-        <div className="flex mt-2">
-          {/* <button
-            onClick={callPeer}
-            className="mx-2 bg-green-400 p-2 rounded-2xl"
-          >
-            Call
-          </button> */}
-          <button onClick={endCall} className="mx-2 bg-red-600 p-2 rounded-2xl">
-           End
-          </button>
-          <button onClick={toggleVideo}  className="mx-2 bg-amber-600 p-2 rounded-2xl">
-           {buttonText?'Video off':'Video on'}
-          </button>
-          <button onClick={toggleMic} className="mx-2 bg-amber-600 p-2 rounded-2xl">
-           {buttonText?'Mic off':'Mic on'}
-          </button>
-           <button onMouseDown={() => setButtonText('Clicked!')} onMouseUp={() => setButtonText('Buy')}>
-      {buttonText}
-    </button>
-        </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
 
-export default join;
+export default Join;
