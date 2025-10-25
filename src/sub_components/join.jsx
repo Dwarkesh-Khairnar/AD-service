@@ -6,6 +6,7 @@ import mic_on from "../assets/mic_on.svg";
 import mic_off from "../assets/mic_off.svg";
 import video_on from "../assets/video_on.svg";
 import video_off from "../assets/video-off.svg";
+import call_end from "../assets/call_end.svg";
 
 function Join() {
   const localVideoRef = useRef(null);
@@ -15,8 +16,8 @@ function Join() {
   const [localStream, setLocalStream] = useState(null);
   const [currentCall, setCurrentCall] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [buttonText, setButtonText] = useState("Video off");
-  const [micText, setMicText] = useState("Mic off");
+  const [buttonText, setButtonText] = useState("Video");
+  const [micText, setMicText] = useState("Mic");
 
   useEffect(() => {
     const loadData = async () => {
@@ -94,7 +95,7 @@ function Join() {
     }
   };
 
-  const toggleMic = () => {
+  const toggleMic = async () => {
     if (localStream) {
       const audioTrack = localStream.getAudioTracks()[0];
       audioTrack.enabled = !audioTrack.enabled; // Toggle audio track
@@ -103,33 +104,59 @@ function Join() {
   };
 
   return (
-    <div className="bg-amber-100 h-screen">
+    <div className="h-screen w-screen">
       {loading ? (
         <Loding />
       ) : (
-        <div className="grid align-middle justify-center pb-3">
+        <div className="flex h-1/1 gap-6">
+          <div
+            className=" grid w-14 gap-10 h-full  bg-gray-300 "
+            style={{ bottom: "0px" }}
+          >
+            <button onClick={toggleVideo} className=" rounded-2xl px-2">
+              <img
+                className="h-7 ml-2.5"
+                src={buttonText === "Video on" ? video_off : video_on}
+              />
+              <span className="ml-1.5 text-sm">Video</span>
+            </button>
+
+            <button onClick={toggleMic} className=" rounded-2xl px-2 ">
+              <img
+                className="h-7 ml-1.5"
+                src={micText === "Mic on" ? mic_off : mic_on}
+              />
+              <span className="text-sm">Mic</span>
+            </button>
+            <button onClick={endCall} className=" bg-red-300 p-2 h-15 rounded-2xl ">
+              <img src={call_end} className=" ml-2 h-6 " />
+            </button>
+          </div>
+
+          {/* video section */}
+          <div>
           <p className="mt-8">Enter Meeting ID</p>
           <div className="flex h-7 mb-2.5">
             <input
               type="text"
               onChange={(e) => setPeerId(e.target.value)}
-              placeholder="Enter peer ID to call"
-              className="border-2"
+              // placeholder="Enter peer ID to call"
+              className="border-2 p-2 "
             />
             <button
-              className="px-2 rounded-tr-xl rounded-xl bg-green-500 cursor-pointer ml-2"
+              className="px-2 bg-green-500 cursor-pointer ml-2"
               onClick={callPeer}
             >
               Join
             </button>
           </div>
           <p className="mr-2">Your call ID: {peerId}</p>
-          <div className="grid-cols-1 my-4 gap-10 md:flex">
+          <div className="grid my-4 gap-10 md:flex ">
             <video
               ref={localVideoRef}
               autoPlay
               muted
-              style={{ width: "500px" }}
+              className=" h-[50%] w-[100%] mr-5"
             />
             <video
               ref={remoteVideoRef}
@@ -138,36 +165,6 @@ function Join() {
               className="mt-2 md:m-0"
             />
           </div>
-          <div className="flex mt-2 h-10">
-            <button
-              onClick={endCall}
-              className="mx-2 bg-red-600 p-2 rounded-2xl"
-            >
-              End
-            </button>
-
-            <button
-              onClick={toggleVideo}
-              className="mx-2 rounded-2xl h-6 px-2" 
-            >
-              <img
-                className="h-4" 
-                src={buttonText === "Video on" ? video_on : video_off}
-              />
-              <span className="text-sm">{buttonText}</span> 
-
-            </button>
-
-            <button
-              onClick={toggleMic}
-              className="mx-2 rounded-2xl h-6 px-2"
-            >
-              <img
-                className="h-4" 
-                src={micText === "Mic on" ? mic_on : mic_off}
-              />
-              <span className="text-sm">{micText}</span> 
-            </button>
           </div>
         </div>
       )}
