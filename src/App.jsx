@@ -8,6 +8,7 @@ import Services from "./component/Services";
 import Client from "./sub_components/Client_m_form.jsx";
 import Meetjoin from "./sub_components/join.jsx";
 import Loding from "./sub_components/loding.jsx";
+import Temp from './temp.jsx'
 
 function App() {
   const [response, setResponse] = useState("");
@@ -24,47 +25,48 @@ function App() {
     loadData();
   }, []);
 
-  const handleHeroSubmit = async (data) => {
-    try {
-      const res = await fetch("http://localhost:5000/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const result = await res.json();
-      setResponse(result.message);
-    } catch (err) {
-      setResponse("Error sending data ❌");
-    }
-  };
-
+  
   return (
-
+  
     <Router>
       {loading ? (
-        <Loding />
-      ) : (
-
-      <div style={{ fontFamily: "sans-serif" }}>
-        <Header />
-        {/* <Hero/> */}
-        <div style={{ padding: "2rem", textAlign: "center" }}>
-          {response && <p>{response}</p>}
+          <Loding />
+        ) : (
+        
+        <div style={{ fontFamily: "sans-serif" }}>
+          <Header />
+          {/* <Hero/> */}
+          <div style={{ padding: "2rem", textAlign: "center" }}>
+            {response && <p>{response}</p>}
+          </div>
+          <Routes>
+            <Route path="" element={<Hero />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/plans" element={<Plans />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/meetjoin" element={<Meetjoin />} />
+            <Route path="/client" element={<Client />} />
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+            {/* Add more routes as needed */}
+          </Routes>
         </div>
-        <Routes>
-          <Route path="" element={<Hero />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/plans" element={<Plans />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/meetjoin" element={<Meetjoin />} />
-          <Route path="/client" element={<Client />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          {/* Add more routes as needed */}
-        </Routes>
-      </div>
-      )}
-    </Router>
-  );
-}
-
-export default App;
+        )}
+      </Router>
+    );
+  }
+  
+  export default App;
+  
+  // const handleHeroSubmit = async (data) => {
+  //   try {
+  //     const res = await fetch("http://localhost:5000/api/submit", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(data),
+  //     });
+  //     const result = await res.json();
+  //     setResponse(result.message);
+  //   } catch (err) {
+  //     setResponse("Error sending data ❌");
+  //   }
+  // };
