@@ -2,15 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Import Router components
 import Meet_form from "../assets/Meet_form.svg";
 import Meet_join from "../assets/Meet_join.svg";
-import man_reisent from "../assets/man_with_responsive.svg"
+import man_reisent from "../assets/man_with_responsive.svg";
 function meeting_home() {
   return (
     <div className="">
       <div className=" h-45 grid items-center justify-center">
-<h1>Welcome to Our Meeting Hub</h1>
-        <p>Bridging Connections for Success</p>
+        <h1 className=" font-semibold text-[300%]">Welcome to Our Meeting Hub</h1>
+        <p className=" font-sans">Bridging Connections for Success</p>
       </div>
-      <div className="h-35 mt-4 flex justify-center gap-14">
+      <div className="h-35 md:mt-4 flex justify-center mt-16 gap-14">
         <div className="">
           <ul className=" flex mt-5 h-10">
             <li className="w-10">
@@ -40,8 +40,12 @@ function meeting_home() {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center mt-20">
+      <div className="flex justify-center md:mt-20">
         <img src={man_reisent} className="h-80" />
+      </div>
+      <div className="w-screen flex justify-center mt-3">
+      <span className="text-red-600">This feacher is only for cleint and Company Representative discution </span>
+
       </div>
     </div>
   );
