@@ -108,7 +108,7 @@ function Join() {
       {loading ? (
         <Loding />
       ) : (
-        <div className="flex h-1/1 gap-6">
+        <div className="flex gap-6" style={{ overflow: 'hidden', height: '100%' }}>
           <div
             className=" grid w-14 gap-10 h-full  bg-gray-300 "
             style={{ bottom: "0px" }}
@@ -151,12 +151,12 @@ function Join() {
             </button>
           </div>
           <p className="mr-2">Your call ID: {peerId}</p>
-          <div className="grid my-4 gap-10 md:flex ">
+          <div className="grid-cols-3 my-4 gap-10">
             <video
               ref={localVideoRef}
               autoPlay
               muted
-              className=" h-[50%] w-[100%] mr-5"
+              className=" h-[50%] w-[97%] mr-5"
             />
             <video
               ref={remoteVideoRef}
