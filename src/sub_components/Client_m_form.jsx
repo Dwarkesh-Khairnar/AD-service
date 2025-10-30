@@ -1,38 +1,124 @@
 import React from "react";
-import Home from "../sub_components/meeting_home";
 
-function claint_m_form() {
+function client_m_form() {
   return (
-    <div className=" grid justify-center align-middle">
-      <Home />
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold text-center text-gray-800">
+          Meeting Scheduling/Request
+        </h2>
+        <form className="space-y-4">
+          {/* Name Field */}
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Company Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter your company name"
+            />
+          </div>
 
-      <h1 className="ml-17 mt-10 mb-8 ab">Request for meeting</h1>
-      <form action="" method="post" className="border-2 p-8 rounded-3xl">
+          {/* Email Field */}
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Work Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter your email"
+            />
+          </div>
+          {/* Mobaile Field */}
+          <div>
+            <label
+              htmlFor="number"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Contact Number
+            </label>
+            <input
+              type="number"
+              id="number"
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter your number"
+            />
+          </div>
+          {/* Timeing Field */}
+          <div>
+            <label
+              htmlFor="time"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Suggest Date and Time
+            </label>
+            <input
+              type="date"
+              id="date"
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter your number"
+            />
+            <input
+              type="time"
+              id="time"
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter your number"
+            />
+          </div>
 
-    <div className="mb-7"> 
-      <label htmlFor="Company-name" className="text-[14px] absolute ml-2.5 bg-amber-50 -m-2">Company Name</label>
-      <input id="Company-name" type="text" name="name" className=" border-2 p-2"/>
-    </div>
+          {/* Name_Client Field */}
+          <div>
+            <label
+              htmlFor="text"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name Of Representative
+            </label>
+            <input
+              type="text"
+              id="Name-Client"
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Name of Representative"
+            />
+          </div>
+          <label htmlFor="Describe_Business">Describe Business</label>
+          <textarea
+            type="textarea"
+            name="Describe_Business"
+            id="Describe_Business"
+            className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+           maxlength="150" placeholder="Enter up to 150 characters"
+          ></textarea>
 
-    <div className="mb-7"> 
-      <label htmlFor="Company-mail" className="text-[14px] absolute ml-2.5 bg-amber-50 -m-2">Company Mail</label>
-      <input id="Company-mail" type="text" name="name" className=" border-2 p-2"/>
-    </div>
-
-    <div className="mb-7"> 
-      <label htmlFor="Company-web" className="text-[14px] absolute ml-2.5 bg-amber-50 -m-2">Company web</label>
-      <input id="Company-web" type="text" name="name" className=" border-2 p-2"/>
-    </div>
-
-    <div className="mb-7"> 
-      <label htmlFor="Representative-name" className="text-[14px] absolute ml-2.5 bg-amber-50 -m-2">Representative-Name</label>
-      <input id="Representative-name" type="text" name="name" className=" border-2 p-2"/>
-    </div>
-
-
-      </form>
+          {/* Submit Button */}
+          <div>
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white bg-amber-500 rounded-md hover:bg-red-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+        <p className="text-sm text-center text-gray-600">
+          Already have an account?{" "}
+          <a href="#" className="text-amber-500 hover:underline">
+            Log in
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
 
-export default claint_m_form;
+export default client_m_form;
