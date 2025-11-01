@@ -24,19 +24,19 @@ function Hero({ onSubmit }) {
             WE ARE AD SARVICE PROVADER
           </h4>
         </div>
-        <p className=" absolute text-emerald-700 start-10 top-70 w-[80%] md:top-80 md:w-[53%] md:start-1/8 mix-blend-color">
+        <p className=" absolute mix-blend-multiply text-amber-600 md:text-emerald-700 start-10 top-70 w-[80%] md:top-80 md:w-[53%] md:start-1/8 md:mix-blend-color">
           At x.ads, we provide innovative ad services designed to boost your
           brand's visibility. Our expert team crafts tailored strategies that
           engage your audience and maximize results. Let us elevate your
           advertising experience!.
         </p>
-        <button className=" absolute start-[38%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">
+        <button className=" absolute start-[36%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">
           <Link rel="stylesheet" to="/plans">Get Start</Link> 
         </button>
         <img
           src={Hero_svg}
           alt=""
-          className="absolute top-1/ end-2/12 w-60 md:top-90 md:end-17 md:w-100"
+          className="absolute end-[18%] w-60 md:top-90 md:end-17 md:w-100"
         />
         ;
       </section>
