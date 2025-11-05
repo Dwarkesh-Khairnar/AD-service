@@ -29,7 +29,7 @@ const apiKeys = {
     // Add more API keys as necessary
 };
 
-router.get('/fetch-date', async (req, res) => {
+router.get('/fetch-ad', async (req, res) => {
     const { url, apiKey, limit } = req.query;
     // Replace with your actual API key for validation
 

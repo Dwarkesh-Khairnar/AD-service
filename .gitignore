@@ -14,11 +14,26 @@ src/assets/
 # IDE settings
 .vscode/
 
+# Temp server files
+
+tempServer.js
+
 # unuse files
 
 temp.jsx
 temp.html
-mysql.txt
+Postgresql.txt
 git commands.txt
 plan.txt
 one.tldr
+--------------------------------------------------------------------------------------------
+Database conection ditels------------------
+
+Supabase.com
+{
+getam28953@limtu.com    [login_id]
+Z8MjgK9W-i_i5fN         [Password]
+
+Ad_service!@#@          [Database Password]
+}
+---------------------------------------------------------------------------------------------

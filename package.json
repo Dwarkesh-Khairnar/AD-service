@@ -13,11 +13,15 @@
   "dependencies": {
     "array-flatten": "^3.0.0",
     "axios": "^1.12.2",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "node-cache": "^5.1.2",
     "peer": "^1.0.2",
     "peerjs": "^1.5.5",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3"
