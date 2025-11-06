@@ -1,12 +1,10 @@
 // backend/server.js
 import express from "express";
 import cors from 'cors'
-import axios from "axios";
 import dotenv from 'dotenv';
 import apiRoutes from "./routes/apiRoutes.js"
 dotenv.config();
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.BACK_PORT
 const app = express();
 app.use(cors());           // allow frontend to call backend
 app.use(express.json());   // parse JSON bodies
@@ -24,6 +22,7 @@ app.get("/", (req, res) => {
 </div>`);
 });
 
+// Api routes
 app.use('/api',apiRoutes);
 
 app.listen(PORT, () => {

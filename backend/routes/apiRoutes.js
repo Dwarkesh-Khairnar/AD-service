@@ -2,9 +2,23 @@
 import express from 'express';
 import axios from 'axios';
 
-const router = express.Router();
+import { client, connectDatabase } from '../db/dbCunnection.js'
 
+const router = express.Router();
+connectDatabase();
 // Test API route
+
+router.get('/get_data', async (req, res) => {
+    try {
+        const result = await client.query('select * from users');
+        console.log('ok');
+        
+        res.json(result.rows)
+    } catch (error) {
+        console.log(error);
+
+    }
+});
 
 router.get('/create-key', async (req, res) => {
     const characters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
