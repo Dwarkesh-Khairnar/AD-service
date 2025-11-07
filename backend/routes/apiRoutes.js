@@ -2,7 +2,7 @@
 import express from 'express';
 import axios from 'axios';
 
-import { client, connectDatabase } from '../db/dbCunnection.js'
+import { client, connectDatabase } from '../db/dbConnection.js'
 
 const router = express.Router();
 connectDatabase();
