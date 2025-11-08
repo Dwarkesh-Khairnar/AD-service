@@ -3,11 +3,17 @@ import express from "express";
 import cors from 'cors'
 import dotenv from 'dotenv';
 import apiRoutes from "./routes/apiRoutes.js"
+import bodyParser from "body-parser";
+import jwt from 'jsonwebtoken';
+
 dotenv.config();
 const PORT = process.env.BACK_PORT
 const app = express();
 app.use(cors());           // allow frontend to call backend
 app.use(express.json());   // parse JSON bodies
+app.use(bodyParser.json())
+
+const SK="23@!jnw";
 
 app.get("/", (req, res) => {
     res.send(`<div style="height: 100%; width: 100%; ">
@@ -22,6 +28,11 @@ app.get("/", (req, res) => {
 </div>`);
 });
 
+app.get('/test', async(req,res)=>{
+       const username = "dwarkesh"; // Simple user check
+    const token = jwt.sign({ username }, SK, { expiresIn: '1h' });
+    res.json({ token });
+})
 // Api routes
 app.use('/api',apiRoutes);
 
