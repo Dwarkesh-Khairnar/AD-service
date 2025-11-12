@@ -30,7 +30,7 @@ function Hero({ onSubmit }) {
           engage your audience and maximize results. Let us elevate your
           advertising experience!.
         </p>
-        <button className=" absolute start-[36%] top-112 font-bold bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">
+        <button className=" absolute start-[36%] top-112 bg-teal-400 rounded-md text-red-50 p-3 md:start-1/3 md:text-2xl md:top-110 ">
           <Link rel="stylesheet" to="/plans">Get Start</Link> 
         </button>
         <img
@@ -40,27 +40,22 @@ function Hero({ onSubmit }) {
         />
         ;
       </section>
+
+      {/* What we do Section */}
       <section>
-      <div className=" bg-amber-400 h-screen w-screen overflow-y-hidden">
-        <div className=" absolute z-10 bg-teal-300 h-72 w-[230%] top-269 start-0 rotate-50 md:h-[80%] md:-ml-[50%] md:mt-96 "></div>
+      <div className=" bg-amber-400 h-screen w-[100%] overflow-y-hidden">
+        <div className=" z-10 bg-teal-300 h-72 w-[230%] top-269 start-0 md:h-[80%] md:-ml-[50%] md:mt-96 ">
+          <p className="font-bold text-3xl text-amber-500 ">What we do?</p>
+          <div className="flex w-full">
+            <div className="w-50">a</div>
+            <div className="w-50">a</div>
+            <div className="w-50">a</div>
+            <div className="w-50">a</div>
+        </div>
+          </div>
         </div>
       </section>
     </>
   );
 }
-
-const handleHeroSubmit = async (data) => {
-  try {
-    const res = await fetch("http://localhost:5000/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    const result = await res.json();
-    setResponse(result.message);
-  } catch (err) {
-    setResponse("Error sending data ❌");
-  }
-};
-
 export default Hero;

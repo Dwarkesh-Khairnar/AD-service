@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import logo from "../assets/img/logo_ad.png";
 
 function Header() {
   const [visible, setVisible] = useState(false);
@@ -22,7 +23,7 @@ function Header() {
   return (
     <>
       <header className="bg-white p-2 pr-3 flex justify-between items-center -mb-16 border-b-2">
-        <div>Logo</div>
+        <img src={logo} alt="Logo" className="w-13"/>
         <div>
           <ul className="flex gap-3">
             <li className="z-50 hidden md:block hover:text-red-600">
