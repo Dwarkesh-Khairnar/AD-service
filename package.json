@@ -11,11 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.5",
-    "@mui/material": "^7.3.5",
-    "@mui/styled-engine-sc": "^7.3.5",
     "array-flatten": "^3.0.0",
     "axios": "^1.12.2",
     "body-parser": "^2.2.0",
@@ -25,6 +21,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "node-cache": "^5.1.2",
+    "nodemon": "^3.1.11",
     "peer": "^1.0.2",
     "peerjs": "^1.5.5",
     "pg": "^8.16.3",
@@ -32,8 +29,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-is": "^18.3.1",
-    "react-router-dom": "^7.9.3",
-    "styled-components": "^6.1.19"
+    "react-router-dom": "^7.9.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

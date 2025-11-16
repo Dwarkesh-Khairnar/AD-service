@@ -1,7 +1,6 @@
 
 import express from 'express';
 import axios from 'axios';
-
 import { client, connectDatabase } from '../db/dbConnection.js'
 
 const router = express.Router();
@@ -10,18 +9,18 @@ connectDatabase();
 
 router.get('/get_data', async (req, res) => {
     try {
-        const result = await client.query('select * from users');
-        console.log('ok');
-        
+        const result = await client.query('select * from users;');
+
         res.json(result.rows)
     } catch (error) {
-        console.log(error);
+        console.log("Error:", error);
 
     }
 });
 
 router.get('/create-key', async (req, res) => {
-    const characters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    const characters = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
         '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
@@ -34,6 +33,16 @@ router.get('/create-key', async (req, res) => {
         const randum_num = Math.floor(Math.random() * characters.length);
         result += characters[randum_num]
     }
+    let mail = 'abcd@gmail.com';
+    let ok = true
+    client.query(`insert into public.Keys_table(work_mail,api_key,isvalid) VALUES($1,$2,$3) RETURNING *`,[mail, result, ok], (err, res) => {
+        
+        if (err) {
+            console.log('Error Executing query:', err.stack);
+        } else {
+            console.log("Inserted row", res.rows);
+        }
+    });
     return res.json({ result })
 });
 
