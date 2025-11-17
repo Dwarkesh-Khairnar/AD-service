@@ -35,8 +35,8 @@ router.get('/create-key', async (req, res) => {
     }
     let mail = 'abcd@gmail.com';
     let ok = true
-    client.query(`insert into public.Keys_table(work_mail,api_key,isvalid) VALUES($1,$2,$3) RETURNING *`,[mail, result, ok], (err, res) => {
-        
+    client.query(`insert into public.Keys_table(work_mail,api_key,isvalid) VALUES($1,$2,$3) RETURNING *`, [mail, result, ok], (err, res) => {
+
         if (err) {
             console.log('Error Executing query:', err.stack);
         } else {
@@ -46,20 +46,8 @@ router.get('/create-key', async (req, res) => {
     return res.json({ result })
 });
 
-const apiKeys = {
-    'A1': { userId: 1, name: 'User One' },
-    'user2_key': { userId: 2, name: 'User Two' },
-    // Add more API keys as necessary
-};
-
 router.get('/fetch-ad', async (req, res) => {
     const { url, apiKey, limit } = req.query;
-    // Replace with your actual API key for validation
-
-    // Validate API Key
-    if (!apiKeys[apiKey]) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid API Key' });
-    }
 
     // Validate URL
     if (!url) {
@@ -67,21 +55,34 @@ router.get('/fetch-ad', async (req, res) => {
     }
 
     try {
+
+        // Await the database query to validate the API key
+        const result = await client.query(`SELECT * FROM public.keys_table WHERE api_key = $1`, [apiKey]);
+
+        // Validate API Key - check if any rows were returned
+        if (result.rows.length === 0) {
+            return res.status(401).json({ error: 'Unauthorized: Invalid API Key' });
+        }
+
+        console.log("Your API key:", result.rows[0].api_key);
+
         const response = await axios.get(url);
         const data = response.data;
-        const date = new Date().toString(); // Returning current date as an example
 
-        // Limit the response if a limit parameter is provided
         const limitedData = limit ? data.slice(0, parseInt(limit)) : data;
 
-        return res.status(200).json({ date, limitedData });
+        
+        const count = await client.query(`select count(*) from keys_table;`);
+        if (count.rows.length === 0) {
+            return res.status(401).json({ error: 'ad not load' });
+        }
+        console.log('count:',count.rows[0].count);
 
-        // // Assuming the date is in the response, you can adjust to fit your data structure
+        return res.status(200).json({ message: 'Done', data: limitedData });
 
-        // // return res.status(200).json({ date: date });
-        // return res.status(200).json({ date: date, data: response.data });
     } catch (error) {
         return res.status(500).json({ error: 'Error fetching data from the URL' });
+
     }
 });
 
