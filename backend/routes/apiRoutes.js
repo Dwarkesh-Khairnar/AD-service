@@ -47,8 +47,12 @@ router.get('/create-key', async (req, res) => {
 });
 
 router.get('/fetch-ad', async (req, res) => {
-    const { url, apiKey, limit } = req.query;
-
+    let { url, apiKey, limit } = req.query;
+    
+    if (limit==0 || limit==undefined) {
+        limit=1;
+    }
+    
     // Validate URL
     if (!url) {
         return res.status(400).json({ error: 'Bad Request: URL is required' });
@@ -87,3 +91,10 @@ router.get('/fetch-ad', async (req, res) => {
 });
 
 export default router;
+
+// function getRandomNumber(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+
+// const randomNum = getRandomNumber(1, 9);
+// console.log(randomNum);
