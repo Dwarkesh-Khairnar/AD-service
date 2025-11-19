@@ -48,11 +48,13 @@ router.get('/create-key', async (req, res) => {
 
 router.get('/fetch-ad', async (req, res) => {
     let { url, apiKey, limit } = req.query;
-    
-    if (limit==0 || limit==undefined) {
-        limit=1;
-    }
-    
+    let msg;
+
+    // if (limit == 0 || limit == undefined) {
+    // limit = 1;
+    //     msg = 'Set limit for fast and good parfect response';
+    // }
+
     // Validate URL
     if (!url) {
         return res.status(400).json({ error: 'Bad Request: URL is required' });
@@ -73,16 +75,15 @@ router.get('/fetch-ad', async (req, res) => {
         const response = await axios.get(url);
         const data = response.data;
 
-        const limitedData = limit ? data.slice(0, parseInt(limit)) : data;
+        // const limitedData = limit ? data.slice(0, parseInt(limit)) : data;
 
-        
-        const count = await client.query(`select count(*) from keys_table;`);
-        if (count.rows.length === 0) {
-            return res.status(401).json({ error: 'ad not load' });
+
+        const link = await client.query(`select * from ad_links order by random() limit 1;`);
+        if (link.rows.length === 0) {
+            return res.status(401).json({ error: 'Your luck is good ad not aweleble right now' });
         }
-        console.log('count:',count.rows[0].count);
 
-        return res.status(200).json({ message: 'Done', data: limitedData });
+        res.status(200).json({ message: msg, data: link.rows[0].video_link ,Provaider:'Service given by Part of Softwere Ad_service Plathform'});
 
     } catch (error) {
         return res.status(500).json({ error: 'Error fetching data from the URL' });
