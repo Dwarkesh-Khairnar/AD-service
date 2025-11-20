@@ -1,14 +1,14 @@
 import React, { useState,useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Router components
-import Header from "./component/Header";
-import Hero from "./component/Hero";
-import Schedule from "./component/Schedule";
-import Plans from "./component/Plans";
-import Services from "./component/Services";
-import Client from "./sub_components/Client_m_form.jsx";
-import Meetjoin from "./sub_components/join.jsx";
-import Loding from "./sub_components/loding.jsx";
-import Temp from './temp.jsx'
+import Header from "./Pages/Header";
+import Hero from "./Pages/Hero";
+import Schedule from "./Pages/Schedule";
+import Plans from "./Pages/Plans";
+import Services from "./Pages/Services";
+import Client from "./Components/Client_m_form.jsx";
+import Meetjoin from "./Components/join.jsx";
+import Loding from "./Components/loding.jsx";
+import Docs from './Pages/Docs.jsx'
 
 function App() {
   const [response, setResponse] = useState("");
@@ -46,6 +46,7 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/meetjoin" element={<Meetjoin />} />
             <Route path="/client" element={<Client />} />
+            <Route path="/docs" element={<Docs />} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             {/* Add more routes as needed */}
           </Routes>
