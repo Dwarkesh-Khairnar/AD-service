@@ -92,10 +92,3 @@ router.get('/fetch-ad', async (req, res) => {
 });
 
 export default router;
-
-// function getRandomNumber(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
-// const randomNum = getRandomNumber(1, 9);
-// console.log(randomNum);
