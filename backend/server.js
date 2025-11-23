@@ -2,9 +2,10 @@
 import express from "express";
 import cors from 'cors'
 import dotenv from 'dotenv';
-import apiRoutes from "./routes/apiRoutes.js"
 import bodyParser from "body-parser";
 import jwt from 'jsonwebtoken';
+import apiRoutes from "./routes/apiRoutes.js"
+import uploadRoutes from "./routes/upload.js"
 
 dotenv.config();
 const PORT = process.env.BACK_PORT
@@ -35,6 +36,7 @@ app.get('/test', async(req,res)=>{
 })
 // Api routes
 app.use('/api',apiRoutes);
+app.use('/uvideo',uploadRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
