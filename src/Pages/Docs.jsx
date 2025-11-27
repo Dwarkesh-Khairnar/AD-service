@@ -11,7 +11,7 @@ function Docs() {
   return (
     <div className="max-w-5xl mx-auto p-6 font-sans">
       {/* Header */}
-      <div className="bg-gradient-to-r from-amber-400 to-amber-600 text-white p-8 rounded-2xl shadow-lg mb-8">
+      <div className="bg-linear-to-r from-amber-400 to-amber-600 text-white p-8 rounded-2xl shadow-lg mb-8">
         <h1 className="text-4xl font-bold mb-2">Ad Service Integration Documentation</h1>
         <p className="text-lg opacity-90">Clean & Developer‑Friendly Guide</p>
       </div>
@@ -140,7 +140,11 @@ export default function App() {
       ) : 'Loading...'}
     </div>
   );
-}`}</pre>
+}
+
+
+
+`}</pre>
             <button onClick={() => copyToClipboard(`import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
