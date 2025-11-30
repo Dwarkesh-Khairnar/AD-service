@@ -66,17 +66,17 @@ function Header() {
           visible ? "opacity-100 h-auto" : "opacity-0 h-0 pointer-events-none"
         } overflow `}
       >
-        <div className=" absolute end-0 w-3/4 h-full bg-amber-400 z-10 border-l-1 border-white">
-          <h4 className="my-4 ml-5">Ad</h4>
+        <div className=" absolute top-0 end-0 w-3/4 h-full bg-amber-400 z-10 border-white">
+          <h4 className="m-6">Ad</h4>
           <hr className="text-blue-100" />
 
-          <ul className="m-20 w-full"> 
-              <li className="my-4 hover:text-red-600 "                onClick={toggleSidenav}> <Link to="/">Home</Link> </li> 
+          <ul className="mt-8 ml-20"> 
+              <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/">Home</Link> </li> 
               <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/services">Services</Link> </li> 
               <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/plans">Plans</Link> </li> 
               <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/schedule">Schedule Meeting</Link> </li> 
               <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/#">Ragistration</Link> </li>
-              <li className="my-4 hover:text-red-600 text-amber-50"onClick={toggleSidenav}> <Link to="/docs">Docs</Link> </li>
+              <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/docs">Docs</Link> </li>
           </ul>
           <hr className="text-blue-100" />
           <ul className="ml-20 mt-10">
