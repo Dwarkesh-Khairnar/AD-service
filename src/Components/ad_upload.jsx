@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
 
 function ad_upload() {
   return (
@@ -55,17 +56,17 @@ function ad_upload() {
         <div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-amber-500 rounded-md hover:bg-red-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full px-4 py-2 text-white bg-amber-500 rounded-md hover:bg-green-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Submit Upload
           </button>
         </div>
       </form>
-      <p className="text-sm text-center text-gray-600">
-        Already have an account?{" "}
-        <a href="#" className="text-amber-500 hover:underline">
-          Log in
-        </a>
+      <p className="text-sm text-center text-gray-600 mt-1">
+        If you need a help:{" "}
+       <Link to="/contact" className="text-green-600 hover:underline">
+        Contact
+      </Link>
       </p>
     </div>
     </div>

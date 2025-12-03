@@ -8,8 +8,9 @@ import Services from "./Pages/Services";
 import Client from "./Components/Client_m_form.jsx";
 import Meetjoin from "./Components/join.jsx";
 import Loding from "./Components/loding.jsx";
-import Docs from './Pages/Docs.jsx'
-import Fileuploade from './Components/fileuploade.jsx'
+import Docs from './Pages/Docs.jsx';
+import Fileuploade from './Components/fileuploade.jsx';
+import AdUpload from "./Components/ad_upload.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -28,36 +29,40 @@ function App() {
 
   
   return (
-<div>
-   <Fileuploade/>
-</div>
+//  <div>
+//    <AdUpload/>
+//    {/* <Fileuploade/> */}
+// </div> 
+
    
   
-    // <Router>
-    //   {loading ? (
-    //       <Loding />
-    //     ) : (
+    <Router>
+      {loading ? (
+          <Loding />
+        ) : (
         
-    //     <div style={{ fontFamily: "sans-serif" }}>
-    //       <Header />
-    //       {/* <Hero/> */}
-    //       <div style={{ padding: "2rem", textAlign: "center" }}>
-    //         {response && <p>{response}</p>}
-    //       </div>
-    //       <Routes>
-    //         <Route path="" element={<Hero />} />
-    //         <Route path="/services" element={<Services />} />
-    //         <Route path="/plans" element={<Plans />} />
-    //         <Route path="/schedule" element={<Schedule />} />
-    //         <Route path="/meetjoin" element={<Meetjoin />} />
-    //         <Route path="/client" element={<Client />} />
-    //         <Route path="/docs" element={<Docs />} />
-    //         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-    //         {/* Add more routes as needed */}
-    //       </Routes>
-    //     </div>
-    //     )}
-    //   </Router>
+        <div style={{ fontFamily: "sans-serif" }}>
+          <Header />
+          {/* <Hero/> */}
+          <div style={{ padding: "2rem", textAlign: "center" }}>
+            {response && <p>{response}</p>}
+          </div>
+          <Routes>
+            <Route path="" element={<Hero />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/plans" element={<Plans />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/meetjoin" element={<Meetjoin />} />
+            <Route path="/client" element={<Client />} />
+            <Route path="/docs" element={<Docs />} />
+            <Route path="/contact" element={<Hero />} />
+            <Route path="/adupload" element={<AdUpload/>} />
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+            {/* Add more routes as needed */}
+          </Routes>
+        </div>
+        )}
+      </Router>
     );
   }
   
