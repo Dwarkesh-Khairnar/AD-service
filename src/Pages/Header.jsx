@@ -26,22 +26,12 @@ function Header() {
         <img src={logo} alt="Logo" className="w-13"/>
         <div>
           <ul className="flex gap-3">
-            <li className="z-50 hidden md:block hover:text-red-600">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="z-50 hidden md:block hover:text-red-600">
-              <Link to="/services">Services</Link>
-            </li>
-            <li className="z-50 hidden md:block hover:text-red-600">
-              <Link to="/plans">Plans</Link>
-            </li>
+            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/">Home</Link></li>
+            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/services">Services</Link></li>
+            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/plans">Plans</Link></li>
             {/* <li className="z-50 hidden md:block hover:text-red-600"><Link to="/placeholder">########</Link></li> */}
-            <li className="z-50 hidden md:block hover:text-red-600">
-              <Link to="/schedule">Schedule Meeting</Link>
-            </li>
-            <li className="my-4 hover:text-red-600 text-amber-50"onClick={toggleSidenav}> 
-              <Link to="/docs">Docs</Link>
-            </li>
+            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/schedule">Schedule Meeting</Link></li>
+            <li className="my-4 hover:text-red-600 text-amber-50"onClick={toggleSidenav}><Link to="/docs">Docs</Link></li>
             
           </ul>
         </div>
@@ -49,12 +39,7 @@ function Header() {
           <button className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">
             +New
           </button>
-          <div
-            className="block md:hidden mr-0 m-2 w-6 cursor-pointer z-50"
-            onClick={toggleSidenav}
-            aria-expanded={visible}
-            aria-controls="sidenav"
-          >
+          <div className="block md:hidden mr-0 m-2 w-6 cursor-pointer z-50" onClick={toggleSidenav} aria-expanded={visible} aria-controls="sidenav">
             {svgs[svg]}
           </div>
         </div>
@@ -76,7 +61,7 @@ function Header() {
               <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/plans">Plans</Link> </li> 
               <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/schedule">Schedule Meeting</Link> </li> 
               <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}> <Link to="/#">Ragistration</Link> </li>
-              <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/docs">Docs</Link> </li>
+              {/* <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}> <Link to="/docs">Docs</Link> </li> */}
           </ul>
           <hr className="text-blue-100" />
           <ul className="ml-20 mt-10">
