@@ -11,6 +11,7 @@ import Loding from "./Components/loding.jsx";
 import Docs from './Pages/Docs.jsx';
 import Fileuploade from './Components/fileuploade.jsx';
 import AdUpload from "./Components/ad_upload.jsx";
+import KeyPage from "./Components/Key.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -57,6 +58,7 @@ function App() {
             <Route path="/docs" element={<Docs />} />
             <Route path="/contact" element={<Hero />} />
             <Route path="/adupload" element={<AdUpload/>} />
+            <Route path="/key_page" element={<KeyPage/>} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             {/* Add more routes as needed */}
           </Routes>
