@@ -15,8 +15,32 @@ function ad_upload() {
       return;
     }
 
-    
+    try {
+      // new Promise((resolve, reject) => {
+        const formdata = new FormData();
+        formdata.append("vedio", file);
 
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "http://localhost:3000/uvideo/upload-video", true);
+
+        xhr.onload = () => {
+          // // if (xhr.status >= 200 && xhr.status < 300) {
+          // console.log(resolve(xhr.response));
+          // // } else {
+          //  console.log(reject(new Error("Upload failed: " + xhr.statusText)));
+            
+          // // }
+        };
+        console.log(xhr);
+        xhr.onerror = () => {
+          console.log(error);
+        };
+        xhr.send(formdata);
+      // });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="h-full w-full flex justify-center mt-30">
@@ -36,17 +60,17 @@ function ad_upload() {
             <input
               type="text"
               id="name"
-              onChange={(e)=>setOrgname(e.target.value)}
+              onChange={(e) => setOrgname(e.target.value)}
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your company name"
-              />
+            />
           </div>
           {/* Name Field */}
           <div>
             <label
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
-              >
+            >
               Video file
             </label>
             <input
