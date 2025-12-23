@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function ad_upload() {
   const [file, setFile] = useState(null);
   const [orgname, setOrgname] = useState(null);
+  const [targeatlink, setTargeatlink] = useState(null);
 
   const uploade = async (params) => {
     params.preventDefault();
@@ -17,26 +18,25 @@ function ad_upload() {
 
     try {
       // new Promise((resolve, reject) => {
-        const formdata = new FormData();
-        formdata.append("vedio", file);
+      const formdata = new FormData();
+      formdata.append("vedio", file);
 
-        const xhr = new XMLHttpRequest();
+      const xhr = new XMLHttpRequest();
 
-        xhr.open("POST", "http://localhost:3000/uvideo/upload-video", true);
+      xhr.open("POST", "http://localhost:3000/uvideo/upload-video", true);
 
-        xhr.onload = () => {
-          // // if (xhr.status >= 200 && xhr.status < 300) {
-          // console.log(resolve(xhr.response));
-          // // } else {
-          //  console.log(reject(new Error("Upload failed: " + xhr.statusText)));
-            
-          // // }
-        };
-        console.log(xhr);
-        xhr.onerror = () => {
-          console.log(error);
-        };
-        xhr.send(formdata);
+      xhr.onload = () => {
+        // // if (xhr.status >= 200 && xhr.status < 300) {
+        // console.log(resolve(xhr.response));
+        // // } else {
+        //  console.log(reject(new Error("Upload failed: " + xhr.statusText)));
+        // // }
+      };
+      console.log(xhr);
+      xhr.onerror = () => {
+        console.log(error);
+      };
+      xhr.send(formdata);
       // });
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ function ad_upload() {
         </h2>
         <form className="space-y-4" onSubmit={uploade}>
           {/* Name Field */}
-          <div>
+          {/* <div>
             <label
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
@@ -64,14 +64,14 @@ function ad_upload() {
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your company name"
             />
-          </div>
+          </div> */}
           {/* Name Field */}
           <div>
             <label
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
-              Video file
+              Video file <span className="text-red-600">*</span>
             </label>
             <input
               type="file"
@@ -79,20 +79,55 @@ function ad_upload() {
               onChange={(e) => setFile(e.target.files?.[0] ?? null)}
               accept="video/*"
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              required
               placeholder="upload your video file"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Targeat Link <span className="text-red-600">*</span>
+            </label>
+            <input
+              type="text"
+              id="target_link"
+              onChange={(e) => setTargeatlink(e.target.value)}
+              accept="video/*"
+              value={"https://"}
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              required
+              placeholder="Enter targeat link"
             />
           </div>
 
           {/* Key Word field */}
-          <label htmlFor="Describe_Business">Describe Business</label>
+          <label
+            htmlFor="Key_words"
+            className="block text-sm font-medium text-gray-700 m-0"
+          >
+            Key words <span className="text-red-600">*</span>
+          </label>
           <textarea
             type="textarea"
-            name="Describe_Business"
-            id="Describe_Business"
+            name="Key_words"
+            id="Key_words"
             className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             // maxlength="150"
-            placeholder="Enter up to 150 characters"
+            placeholder="Describe video useing key words, up to 225 characters"
           ></textarea>
+
+          {/* plan details  */}
+          <p className="block text-sm font-medium text-gray-600 ">
+            Review plan details:{" "}
+            <Link
+              to={"invoise"}
+              className=" text-blue-500 hover:text-red-600 hover:underline"
+            >
+              Click
+            </Link>
+          </p>
 
           {/* Submit Button */}
           <div>
