@@ -59,6 +59,7 @@ function App() {
             <Route path="/contact" element={<Hero />} />
             <Route path="/adupload" element={<AdUpload/>} />
             <Route path="/key_page" element={<KeyPage/>} />
+            <Route path="/Fileuploade" element={<Fileuploade/>} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             {/* Add more routes as needed */}
           </Routes>
