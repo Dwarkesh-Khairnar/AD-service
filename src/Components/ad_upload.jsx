@@ -49,23 +49,8 @@ function ad_upload() {
           Live your Ad
         </h2>
         <form className="space-y-4" onSubmit={uploade}>
-          {/* Name Field */}
-          {/* <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Company Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              onChange={(e) => setOrgname(e.target.value)}
-              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter your company name"
-            />
-          </div> */}
-          {/* Name Field */}
+
+          {/* File Upload Field */}
           <div>
             <label
               htmlFor="name"
@@ -83,6 +68,8 @@ function ad_upload() {
               placeholder="upload your video file"
             />
           </div>
+
+          {/* Targeat link Field */}
           <div>
             <label
               htmlFor="name"
@@ -102,6 +89,29 @@ function ad_upload() {
             />
           </div>
 
+          {/* Ads type Field */}
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Ad type: <span className="text-red-600">*</span>
+            </label>
+            <select
+              name="Adtypes"
+              id="adtypes"
+              onChange={(e) => setOrgname(e.target.value)}
+              className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter your company name"
+              required
+            >
+              <option value=""></option>
+              <option value="Video">Video</option>
+              <option value="Image">Image</option>
+              <option value="Banner">Banner</option>
+            </select>
+          </div>
+
           {/* Key Word field */}
           <label
             htmlFor="Key_words"
@@ -114,8 +124,10 @@ function ad_upload() {
             name="Key_words"
             id="Key_words"
             className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-            // maxlength="150"
+            maxlength="250"
+            minLength={'150'}
             placeholder="Describe video useing key words, up to 225 characters"
+            required
           ></textarea>
 
           {/* plan details  */}
