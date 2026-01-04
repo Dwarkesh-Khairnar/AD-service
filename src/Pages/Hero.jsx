@@ -43,7 +43,7 @@ function Hero({ onSubmit }) {
 
       {/* What we do Section */}
       <section>
-      <div className=" bg-amber-400 h-screen w-[100%] overflow-y-hidden">
+      <div className=" bg-amber-400 h-screen w-full overflow-y-hidden">
         <div className=" z-10 bg-teal-300 h-72 w-[230%] top-269 start-0 md:h-[80%] md:-ml-[50%] md:mt-96 ">
           <p className="font-bold text-3xl text-amber-500 ">What we do?</p>
           <div className="flex w-full">

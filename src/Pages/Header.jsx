@@ -31,7 +31,7 @@ function Header() {
             <li className="z-50 hidden md:block hover:text-red-600"><Link to="/plans">Plans</Link></li>
             {/* <li className="z-50 hidden md:block hover:text-red-600"><Link to="/placeholder">########</Link></li> */}
             <li className="z-50 hidden md:block hover:text-red-600"><Link to="/schedule">Schedule Meeting</Link></li>
-            <li className="my-4 hover:text-red-600 text-amber-50"onClick={toggleSidenav}><Link to="/docs">Docs</Link></li>
+            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/docs">Docs</Link></li>
             
           </ul>
         </div>
