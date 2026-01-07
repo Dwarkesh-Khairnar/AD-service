@@ -82,7 +82,7 @@ function ad_upload() {
               id="target_link"
               onChange={(e) => setTargeatlink(e.target.value)}
               accept="video/*"
-              value={"https://"}
+              // value={"https://"}
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               required
               placeholder="Enter targeat link"
@@ -125,7 +125,7 @@ function ad_upload() {
             id="Key_words"
             className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             maxlength="250"
-            minLength={'150'}
+            minLength={'50'}
             placeholder="Describe video useing key words, up to 225 characters"
             required
           ></textarea>

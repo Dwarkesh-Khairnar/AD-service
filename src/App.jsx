@@ -9,9 +9,10 @@ import Client from "./Components/Client_m_form.jsx";
 import Meetjoin from "./Components/join.jsx";
 import Loding from "./Components/loding.jsx";
 import Docs from './Pages/Docs.jsx';
-import Fileuploade from './Components/fileuploade.jsx';
+import Fileuploade from './Components/Ad_runing_component.jsx';
 import AdUpload from "./Components/ad_upload.jsx";
 import KeyPage from "./Components/Key.jsx";
+import Temp from "./temp.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -31,8 +32,10 @@ function App() {
   
   return (
 //  <div>
-//    <AdUpload/>
+//   <Temp/>
+//    {/* <AdUpload/> */}
 //    {/* <Fileuploade/> */}
+
 // </div> 
 
    
@@ -59,7 +62,8 @@ function App() {
             <Route path="/contact" element={<Hero />} />
             <Route path="/adupload" element={<AdUpload/>} />
             <Route path="/key_page" element={<KeyPage/>} />
-            <Route path="/Fileuploade" element={<Fileuploade/>} />
+            <Route path="/fileuploade" element={<Fileuploade/>} />
+            <Route path="/temp" element={<Temp/>} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             {/* Add more routes as needed */}
           </Routes>
