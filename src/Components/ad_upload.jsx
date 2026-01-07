@@ -5,6 +5,15 @@ function ad_upload() {
   const [file, setFile] = useState(null);
   const [orgname, setOrgname] = useState(null);
   const [targeatlink, setTargeatlink] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [logs, setLogs] = useState([]);
+  const [uploading, setUploading] = useState(false);
+
+  const addLog = (msg, level = "info") =>
+    setLogs((l) => [
+      ...l,
+      { msg, level, time: new Date().toLocaleTimeString() },
+    ]);
 
   const uploade = async (params) => {
     params.preventDefault();
@@ -13,8 +22,13 @@ function ad_upload() {
     if (!file) {
       console.log("Please choose a file.");
       // setStatus("Please choose a file.");
+      addLog("Please choose a file.", "error");
       return;
     }
+
+    setProgress(0);
+    setUploading(true);
+    addLog(`Starting upload: ${file.name}`);
 
     try {
       // new Promise((resolve, reject) => {
@@ -26,30 +40,46 @@ function ad_upload() {
       xhr.open("POST", "http://localhost:3000/uvideo/upload-video", true);
 
       xhr.onload = () => {
-        // // if (xhr.status >= 200 && xhr.status < 300) {
-        // console.log(resolve(xhr.response));
-        // // } else {
-        //  console.log(reject(new Error("Upload failed: " + xhr.statusText)));
-        // // }
+        if (xhr.status >= 200 && xhr.status < 300) {
+          console.log(resolve(xhr.response));
+          addLog(`Upload succeeded: ${xhr.responseText}`, "success");
+        } else {
+          console.log(reject(new Error("Upload failed: " + xhr.statusText)));
+          addLog(`Upload failed: ${xhr.status} ${xhr.statusText}`)
+        }
       };
-      console.log(xhr);
+      // console.log(xhr);
+
+      // Progress
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+          const percent = Math.round((e.loaded / e.total) * 100);
+          setProgress(percent);
+          addLog(`Upload progress: ${percent}%`);
+        }
+      };
+
       xhr.onerror = () => {
         console.log(error);
+        setUploading(false);
+        addLog("Network error during upload", "error");
       };
+
       xhr.send(formdata);
       // });
     } catch (error) {
       console.log(error);
+      setUploading(false);
+      addLog(`Send error: ${error.message}`, "error");
     }
   };
   return (
-    <div className="h-full w-full flex justify-center mt-30">
+    <div className="h-screen w-full flex justify-center items-center">
       <div>
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-10">
           Live your Ad
         </h2>
         <form className="space-y-4" onSubmit={uploade}>
-
           {/* File Upload Field */}
           <div>
             <label
@@ -82,7 +112,6 @@ function ad_upload() {
               id="target_link"
               onChange={(e) => setTargeatlink(e.target.value)}
               accept="video/*"
-              // value={"https://"}
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               required
               placeholder="Enter targeat link"
@@ -124,8 +153,8 @@ function ad_upload() {
             name="Key_words"
             id="Key_words"
             className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-            maxlength="250"
-            minLength={'50'}
+            maxLength="250"
+            minLength={"50"}
             placeholder="Describe video useing key words, up to 225 characters"
             required
           ></textarea>
@@ -151,6 +180,36 @@ function ad_upload() {
             </button>
           </div>
         </form>
+
+        {/* Progress bar and logs */}
+
+        {/* Style Needed, convert this on bottum bar*/}
+        <div className="mt-4">
+          <div className="w-full bg-gray-200 rounded h-4 overflow-hidden">
+            <div
+              style={{ width: `${progress}%` }}
+              className="h-4 bg-green-500 transition-all"
+            ></div>
+          </div>
+          <div className="mt-2 text-sm text-gray-700">
+            {logs.map((l, i) => (
+              <div
+                key={i}
+                style={{
+                  color:
+                    l.level === "error"
+                      ? "red"
+                      : l.level === "success"
+                      ? "green"
+                      : "black",
+                }}
+              >
+                [{l.time}] {l.msg}
+              </div>
+            ))}
+          </div>
+        </div>
+
         <p className="text-sm text-center text-gray-600 mt-1">
           If you need a help:{" "}
           <Link to="/contact" className="text-green-600 hover:underline">

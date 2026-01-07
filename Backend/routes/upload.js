@@ -90,8 +90,8 @@ router.post("/upload-video", upload.any(), async (req, res) => {
       return res.json({ status: "success", Link: link ,DBResult:result.rows});
 
     } catch (error) {
-      console.log("DATABASE ERROR:", err);
-      res.status(500).json({ error: err.message });
+      console.log("DATABASE ERROR:", error);
+      res.status(500).json({ error: error.message });
     }
   } catch (err) {
     console.log("SERVER ERROR:", err);
