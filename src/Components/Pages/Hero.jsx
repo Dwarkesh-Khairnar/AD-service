@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Hero_svg from "../assets/man_see_the_wall.svg";
+import Hero_svg from "../../assets/man_see_the_wall.svg";
 import { Link } from "react-router-dom";
 
 function Hero({ onSubmit }) {

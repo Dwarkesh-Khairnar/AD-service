@@ -1,5 +1,5 @@
 
-import Home from "../Components/meeting_home.jsx";
+import Home from "../Meeting components/meeting_home.jsx";
 
 const Schedule = () => {
  

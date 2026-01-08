@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function fileuploade() {
+function ad_runner() {
   const [showOverlay, setShowOverlay] = useState(false);
   const [timesing, setTimesing] = useState(true);
   const [cross, setCross] = useState(false);
@@ -126,4 +126,4 @@ function fileuploade() {
   );
 }
 
-export default fileuploade;
+export default ad_runner;

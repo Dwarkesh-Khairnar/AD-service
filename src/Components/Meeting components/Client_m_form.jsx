@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Import Router components
 
 function client_m_form() {
   return (
@@ -106,15 +107,16 @@ function client_m_form() {
               type="submit"
               className="w-full px-4 py-2 text-white bg-amber-500 rounded-md hover:bg-red-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              Sign Up
+              Send Request
             </button>
           </div>
         </form>
         <p className="text-sm text-center text-gray-600">
-          Already have an account?{" "}
-          <a href="#" className="text-amber-500 hover:underline">
-            Log in
-          </a>
+          Already have an Id?{" : "}
+        <Link to="/meetjoin"><span className="text-amber-500 hover:underline">
+            Join Meeting
+          </span></Link>
+          
         </p>
       </div>
     </div>

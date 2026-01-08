@@ -1,17 +1,17 @@
 import React, { useState,useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Router components
-import Header from "./Pages/Header";
-import Hero from "./Pages/Hero";
-import Schedule from "./Pages/Schedule";
-import Plans from "./Pages/Plans";
-import Services from "./Pages/Services";
-import Client from "./Components/Client_m_form.jsx";
-import Meetjoin from "./Components/join.jsx";
+import Header from "./Components/Pages/Header";
+import Hero from "./Components/Pages/Hero";
+import Schedule from "./Components/Pages/Schedule";
+import Plans from "./Components/Pages/Plans";
+import Services from "./Components/Pages/Services";
+import Client from "./Components/Meeting components/Client_m_form.jsx";
+import Meetjoin from "./Components/Meeting components/join.jsx";
 import Loding from "./Components/loding.jsx";
-import Docs from './Pages/Docs.jsx';
-import Fileuploade from './Components/Ad_runing_component.jsx';
-import AdUpload from "./Components/ad_upload.jsx";
-import KeyPage from "./Components/Key.jsx";
+import Docs from './Components/Pages/Docs.jsx';
+import Ad_runner from './Components/Ads components/Ad_runing_component.jsx';
+import AdUpload from "./Components/Ads Uploads/ad_upload.jsx";
+import KeyPage from "./Components/Auth/Key.jsx";
 import Temp from "./temp.jsx";
 
 function App() {
@@ -62,7 +62,7 @@ function App() {
             <Route path="/contact" element={<Hero />} />
             <Route path="/adupload" element={<AdUpload/>} />
             <Route path="/key_page" element={<KeyPage/>} />
-            <Route path="/fileuploade" element={<Fileuploade/>} />
+            <Route path="/ad_runner" element={<Ad_runner/>} />
             <Route path="/temp" element={<Temp/>} />
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             {/* Add more routes as needed */}

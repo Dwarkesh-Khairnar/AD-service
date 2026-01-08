@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Peer from "peerjs";
-import Loding from "./loding"; // Loading component
+import Loding from "../loding"; // Loading component
 
-import mic_on from "../assets/mic_on.svg";
-import mic_off from "../assets/mic_off.svg";
-import video_on from "../assets/video_on.svg";
-import video_off from "../assets/video-off.svg";
-import call_end from "../assets/call_end.svg";
+import mic_on from "../../assets/mic_on.svg";
+import mic_off from "../../assets/mic_off.svg";
+import video_on from "../../assets/video_on.svg";
+import video_off from "../../assets/video-off.svg";
+import call_end from "../../assets/call_end.svg";
 
 function Join() {
   const localVideoRef = useRef(null);

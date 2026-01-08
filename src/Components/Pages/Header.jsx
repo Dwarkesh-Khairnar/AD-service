@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import logo from "../assets/img/logo_ad.png";
+import logo from "../../assets/img/logo_ad.png";
 
 function Header() {
   const [visible, setVisible] = useState(false);
