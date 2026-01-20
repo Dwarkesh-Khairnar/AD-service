@@ -1,22 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function ad_runner() {
+function ad_runner({ children }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [timesing, setTimesing] = useState(true);
   const [cross, setCross] = useState(false);
   const [cundown, setCundown] = useState("");
-  // const [active, setActive] = useState(true);
+  const [resetskip, setresetskip] = useState(0);
   const timerRef = useRef(null);
   const inactivity_time = 5000;
-  const skiptime = 10;
+  const skiptime = 5;
   let skiptimetemp = skiptime;
 
   // Skip button display timeing
   const skipstart = () => {
+    setTimesing(true);
     setShowOverlay(true);
+    setCross(false);
     for (let index = skiptime; index >= 0; index--) {
       setTimeout(() => {
-        // console.log("timeout:", index);
+        console.log("timeout:", index);
         setCundown(index);
         if (index == 0) {
           setTimesing(false);
@@ -25,7 +27,8 @@ function ad_runner() {
       }, (skiptimetemp - index) * 1000);
     }
   };
-  const testfunction = () => {
+
+  const closeOverlay = () => {
     setShowOverlay(false);
   };
 
@@ -35,13 +38,20 @@ function ad_runner() {
     // setShowOverlay(false);
 
     timerRef.current = setTimeout(() => {
-      setShowOverlay(true);
+      // setShowOverlay(true);
       skipstart();
       console.log("No interaction for 5 seconds");
     }, inactivity_time);
   };
 
   useEffect(() => {
+    // When the overlay is visible we *disable* the listeners
+    if (showOverlay) {
+      // clean any pending timeout so the overlay isn’t triggered again
+      if (timerRef.current) clearTimeout(timerRef.current);
+      return;
+    }
+
     const events = [
       "mousemove",
       "mousedown",
@@ -60,20 +70,11 @@ function ad_runner() {
       if (timerRef.current) clearTimeout(timerRef.current);
       events.forEach((event) => window.removeEventListener(event, resetTimer));
     };
-  }, []);
+  }, [showOverlay]);
 
   return (
     <div className="app">
-      {/* <div>
-        <div
-          className="p-10 bg-violet-400 h-30 w-60 m-40"
-          onClick={() => {
-            skipstart();
-          }}
-        >
-          Open Overlay
-        </div>
-      </div> */}
+      {children}
 
       {/* GLOBAL OVERLAY */}
       {showOverlay && (
@@ -98,7 +99,7 @@ function ad_runner() {
             {cross && (
               <span
                 className="absolute top-1.5 right-4 font-bold cursor-pointer hover:text-red-600"
-                onClick={testfunction}
+                onClick={closeOverlay}
               >
                 &times;
               </span>
