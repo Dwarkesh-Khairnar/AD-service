@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-white p-2 pr-3 flex justify-between items-center -mb-16 border-b-2">
+      <header className=" bg-transparent p-2 pr-3 flex justify-between items-center -mb-16 ">
         <img src={logo} alt="Logo" className="w-13"/>
         <div>
           <ul className="flex gap-3">
