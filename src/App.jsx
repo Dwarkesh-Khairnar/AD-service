@@ -9,7 +9,7 @@ import Client from "./Components/Meeting components/Client_m_form.jsx";
 import Meetjoin from "./Components/Meeting components/join.jsx";
 import Loding from "./Components/loding.jsx";
 import Docs from './Components/Pages/Docs.jsx';
-import Ad_runner from './Components/Ads components/Ad_runing_component.jsx';
+import Ad_runner from './Components/Ads components/Ad_auto_runing_component.jsx';
 import AdUpload from "./Components/Ads Uploads/ad_upload.jsx";
 import KeyPage from "./Components/Auth/Key.jsx";
 import Temp from "./temp.jsx";
