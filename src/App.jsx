@@ -49,9 +49,7 @@ function App() {
         <div style={{ fontFamily: "sans-serif" }}>
           <Header />
           {/* <Hero/> */}
-          <div style={{ padding: "2rem", textAlign: "center" }}>
-            {response && <p>{response}</p>}
-          </div>
+            <main className="">
           <Routes>
             <Route path="" element={<Hero />} />
             <Route path="/services" element={<Services />} />
@@ -68,6 +66,7 @@ function App() {
             {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             {/* Add more routes as needed */}
           </Routes>
+        </main>
           <Footer/>
         </div>
         )}
