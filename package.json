@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "array-flatten": "^3.0.0",
     "axios": "^1.12.2",
     "body-parser": "^2.2.0",
