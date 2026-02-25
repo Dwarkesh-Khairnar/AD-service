@@ -61,12 +61,12 @@ function Header() {
 
       <div
       id="sidenav"
-      className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-400 ease-in-out ${sidenav ? " y-0 opacity-100 h-[70%]":"y-full opacity-0 h-0"}`}
+      className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-400 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-[70%]":"y-full opacity-0 z-50 h-0"}`}
       >
         <div className=" absolute top-0 w-full h-full bg-amber-400 z-10 border-l-2 border-white">
           <hr className="mt-10 text-transparent" />
 
-          <ul className="mt-8 ml-20">
+          <ul className={`mt-8 ml-20 fixed inset-0 top-0 left-0 transform transition-all duration-400 ease-in-out ${sidenav ? "block":"hidden"}`}>
             <li className="my-4 hover:text-red-600 text-5xl font-bold text-amber-50 opacity-55"                 onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
             <li className="my-4 hover:text-red-600 text-4xl font-stretch-50% text-gray-800" onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
             <li className="my-4 hover:text-red-600 text-5xl"                 onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
