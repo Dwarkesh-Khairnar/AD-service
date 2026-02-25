@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import logo from "../../assets/img/logo_ad.png";
 
+const flex_hoverUnderlineClass =
+  "relative cursor-pointer " +
+  "after:content-[''] after:absolute after:left-0 after:bottom-[-0px] " +
+  "after:w-0 after:h-[1.5px] after:bg-red-600 " +
+  "after:transition-width after:duration-400 after:ease-linear " +
+  "hover:after:w-full " +
+  "z-50 hidden md:block " +
+  "hover:text-red-600";
+
 function Header() {
   const [sidenav, setsidenav] = useState(false);
   const [svg, setSvg] = useState(1);
@@ -22,17 +31,16 @@ function Header() {
 
   return (
     <>
-      <header className="bg-transparent fixed w-screen z-10">
-      <div className="w-screen mx-auto flex items-center text-blue-100 justify-between h-16 px-4">
+      <header className="bg-transparent fixed w-screen z-15">
+      <div  className="w-screen mx-auto flex items-center font-thin text-blue-100 justify-between h-16 px-4">
         <img src={logo} alt="Logo" className="w-13" />
         <div>
           <ul className="flex gap-3">
-            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/">Home</Link></li>
-            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/services">Services</Link></li>
-            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/plans">Plans</Link></li>
-            {/* <li className="z-50 hidden md:block hover:text-red-600"><Link to="/placeholder">########</Link></li> */}
-            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/schedule">Meeting</Link></li>
-            <li className="z-50 hidden md:block hover:text-red-600"><Link to="/docs">Docs</Link></li>
+            <li className={flex_hoverUnderlineClass}><Link to="/">Home</Link></li>
+            <li className={flex_hoverUnderlineClass}><Link to="/services">Services</Link></li>
+            <li className={flex_hoverUnderlineClass}><Link to="/plans">Plans</Link></li>
+            <li className={flex_hoverUnderlineClass}><Link to="/schedule">Meeting</Link></li>
+            <li className={flex_hoverUnderlineClass}><Link to="/docs">Docs</Link></li>
           </ul>
         </div>
         <div className="flex z-50">
