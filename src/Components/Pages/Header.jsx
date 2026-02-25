@@ -60,26 +60,20 @@ function Header() {
       </header>
 
       <div
-        id="sidenav"
-        className={`top-0 transition-opacity duration-200 ease-in-out ${
-          sidenav ? "opacity-100 h-auto" : "opacity-0 h-0 pointer-events-none"
-        } overflow `}
+      id="sidenav"
+      className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-400 ease-in-out ${sidenav ? " y-0 opacity-100 h-[70%]":"y-full opacity-0 h-0"}`}
       >
-        <div className=" absolute top-0 end-0 w-3/4 h-full bg-amber-400 z-10 border-l-2 border-white">
-          <h4 className="m-6 text-amber-400">Ad</h4>
-          <hr className="text-blue-100 -mt-3" />
+        <div className=" absolute top-0 w-full h-full bg-amber-400 z-10 border-l-2 border-white">
+          <hr className="mt-10 text-transparent" />
 
           <ul className="mt-8 ml-20">
-            <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule Meeting</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600"                 onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-amber-50" onClick={toggleSidenav}>{" "}<Link to="/docs">Docs</Link>{" "}</li>
-          </ul>
-          <hr className="text-blue-100" />
-          <ul className="ml-20 mt-10">
-            <li className="text-amber-50 hover:text-red-600"     onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
+            <li className="my-4 hover:text-red-600 text-5xl font-bold text-amber-50 opacity-55"                 onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
+            <li className="my-4 hover:text-red-600 text-4xl font-stretch-50% text-gray-800" onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
+            <li className="my-4 hover:text-red-600 text-5xl"                 onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
+            <li className="my-4 hover:text-red-600 text-4xl font-extrabold opacity-50 text-amber-50" onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule Meeting</Link>{" "}</li>
+            <li className="my-4 hover:text-red-600 text-4xl"                 onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
+            <li className="my-4 hover:text-red-600 text-4xl font-bold text-gray-800" onClick={toggleSidenav}>{" "}<Link to="/docs">Docs</Link>{" "}</li>
+            <li className="my-4 hover:text-red-600 text-4xl font-semibold opacity-55"     onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
           </ul>
         </div>
       </div>
