@@ -5,11 +5,11 @@ import logo from "../../assets/img/logo_ad.png";
 const flex_hoverUnderlineClass =
   "relative cursor-pointer " +
   "after:content-[''] after:absolute after:left-0 after:bottom-[-0px] " +
-  "after:w-0 after:h-[1.5px] after:bg-red-600 " +
+  "after:w-0 after:h-[1.5px] after:bg-[#071025] " +
   "after:transition-width after:duration-400 after:ease-linear " +
   "hover:after:w-full " +
   "z-50 hidden md:block " +
-  "hover:text-red-600";
+  "hover:text-[#071025]";
 
 function Header() {
   const [sidenav, setsidenav] = useState(false);
@@ -40,7 +40,7 @@ function Header() {
             <li className={flex_hoverUnderlineClass}><Link to="/services">Services</Link></li>
             <li className={flex_hoverUnderlineClass}><Link to="/plans">Plans</Link></li>
             <li className={flex_hoverUnderlineClass}><Link to="/schedule">Meeting</Link></li>
-            <li className={flex_hoverUnderlineClass}><Link to="/docs">Docs</Link></li>
+            <li className={flex_hoverUnderlineClass}><Link to="/Contact">Contact</Link></li>
           </ul>
         </div>
         <div className="flex z-50">
@@ -61,19 +61,21 @@ function Header() {
 
       <div
       id="sidenav"
-      className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-400 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-[70%]":"y-full opacity-0 z-50 h-0"}`}
+      className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-900 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-full":"y-full opacity-0 z-50 h-0"}`}
       >
         <div className=" absolute top-0 w-full h-full bg-amber-400 z-10 border-l-2 border-white">
           <hr className="mt-10 text-transparent" />
 
-          <ul className={`mt-8 ml-20 fixed inset-0 top-0 left-0 transform transition-all duration-400 ease-in-out ${sidenav ? "block":"hidden"}`}>
-            <li className="my-4 hover:text-red-600 text-5xl font-bold text-amber-50 opacity-55"                 onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-4xl font-stretch-50% text-gray-800" onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-5xl"                 onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-4xl font-extrabold opacity-50 text-amber-50" onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule Meeting</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-4xl"                 onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-4xl font-bold text-gray-800" onClick={toggleSidenav}>{" "}<Link to="/docs">Docs</Link>{" "}</li>
-            <li className="my-4 hover:text-red-600 text-4xl font-semibold opacity-55"     onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
+          <ul className={`mt-8 fixed inset-0 top-30 left-15 transform transition-all duration-400 ease-in-out ${sidenav ? "block":"hidden"}`}>
+            <li className="my-4 text-5xl font-bold text-amber-50 opacity-55"       onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
+            <li className="my-4 text-4xl font-stretch-50% text-gray-800"           onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
+            <li className="my-4 text-5xl"                                            onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
+            <li className="my-4 text-4xl font-extrabold opacity-50 text-amber-50"  onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule <br /> Meeting</Link>{" "}</li>
+            <li className="my-4 text-4xl"                                            onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
+            <li className="my-4 text-4xl font-bold text-gray-800"                  onClick={toggleSidenav}>{" "}<Link to="/Contact">Contact</Link>{" "}</li>
+            <li className="my-4 text-4xl font-semibold opacity-55"                   onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
+            <li className="my-4 text-2xl opacity-70 bottom-5 fixed"                  onClick={toggleSidenav}>{" "}<Link to="/Instagram">Instagram</Link></li>                                      {/* TODO: Add working links*/}
+            <li className="my-4 text-2xl opacity-70 bottom-13 fixed"                 onClick={toggleSidenav}>{" "}<Link to="https://google.com">LinkedIn</Link></li>                               {/*TODO: ADD WORKINK LINKEDIN LINK*/}
           </ul>
         </div>
       </div>
