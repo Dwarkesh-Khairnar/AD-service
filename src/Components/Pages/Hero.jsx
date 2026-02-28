@@ -8,6 +8,7 @@ function Hero() {
   const scroll1 = useRef(null);
   const scroll2 = useRef(null);
   const arrowMove = useRef(null);
+  
   const containerRef = useRef(null);
   const serviceRef = useRef(null);
   const RmoveSvgRef = useRef(null);
@@ -17,15 +18,15 @@ function Hero() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         scroll1.current,
-        { height: 650 }, // start 1000 px below its original spot
+        { height: 650 },
         {
           height: 0, // end at its natural position
           transformOrigin: "top",
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 0, // when the container’s top reaches 200 px from the top of the viewport
-            end: 800, // when the container’s bottom reaches 800 px from the top
+            start: 0,
+            end: 800,
             scrub: true,
             toggleActions: "play none none reverse",
           },
@@ -33,18 +34,17 @@ function Hero() {
       );
     }, containerRef); // limit scope to container
 
-
     const op = gsap.context(() => {
       gsap.fromTo(
         scroll2.current,
-        { height: 650}, // start 1000 px below its original spot
+        { height: 650},
         {
           height: 0, // end at its natural position
           ease: "power2.out",
           scrollTrigger: {
             trigger: serviceRef.current,
-            start: 0, // when the container’s top reaches 200 px from the top of the viewport
-            end: 800, // when the container’s bottom reaches 800 px from the top
+            start: 0,
+            end: 800,
               scrub: true,
             toggleActions: "play none none reverse",
           },
@@ -52,19 +52,21 @@ function Hero() {
       );
     }, serviceRef); // limit scope to container
 
-
     const svgEM = gsap.context(() => {
       gsap.to(arrowMove.current, {
         rotate:-180,
         scrollTrigger: {
             trigger: serviceRef.current,
-            start: 0, // when the container’s top reaches 200 px from the top of the viewport
-            end: 800, // when the container’s bottom reaches 800 px from the top
+            start: 0,
+            end: 800,
             toggleActions: "play none none reverse",
           },
       });
     }, RmoveSvgRef);
 
+    const TRM=gsap.context(()=>{
+      gsap.to()
+    })
     return () => ctx.revert() + op.revert() + svgEM.revert(); // clean up on unmount
   }, []);
 
@@ -87,8 +89,8 @@ function Hero() {
         <span className="font-bold absolute bottom-10 left-10" ref={arrowMove}>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="#fff" viewBox="0 0 12 12"><path fill="currentColor" d="m5.796 9.246-2.97-2.97-.762.782 4.356 4.356 4.356-4.356-.782-.782-2.96 2.96V1.039H5.806z"></path></svg></span>
 
-        <span className=" absolute md:bottom-20 md:right-100 md:text-3xl bottom-49 right-23 text-2xl md:text-white">Targeting & <br /> segmentation</span>
-        <span className=" absolute md:bottom-20 md:right-20  md:text-3xl bottom-25 right-14 text-2xl md:text-black text-white"> Performance, <br />Strategy, Design.</span>
+        <span className=" absolute md:bottom-20 md:right-100 md:text-3xl bottom-35 right-22.5 text-[20px] md:text-white">Targeting & <br /> segmentation</span>
+        <span className=" absolute md:bottom-20 md:right-20  md:text-3xl bottom-18 right-14 text-[20px] md:text-black text-white"> Performance, <br />Strategy, Design.</span>
         
         </div>
       <div className="h-59 bg-amber-600"></div>
