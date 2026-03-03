@@ -1,16 +1,16 @@
-### Collage project 2 (Ad service system)
+# Collage project 2 (Ad service system)
 
 it is
 
-# React + Vite
-Back end application
+### React.js + Vite
+### Back end Node.js
 
 ## React excution commans
 
-For frontend
-# npm run dev
+### For frontend
+    npm run dev
 
-for backend
-#npm server.js
+### for backend
+    npm server.js
 
 ## Expanding the ESLint configuration
