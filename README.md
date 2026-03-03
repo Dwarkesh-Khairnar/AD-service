@@ -1,11 +1,30 @@
-# Collage project 2 (Ad service system)
+# Ad service system
 
-it is
+it is therd party ads netwerking patheform like 
+-  google ads
+-  meta ads 
+-  meadia net
 
-### React.js + Vite
-### Back end Node.js
+## Tech stacks
+- ## Frontend
+  - React.js + Vite, 
+  - TailwindCss
+- ## Backend
+    - Node.js
+    - Express.js
 
-## React excution commans
+- ## Security
+    - JWT
+
+- ##  cache
+    - Redis
+- ## Storege 
+    - Mega.nz - not good but good for small project and with 20GB
+
+- ## Database
+    - PostgraSql - Free plan of Ai**n
+
+ ## React excution commans
 
 ### For frontend
     npm run dev
@@ -13,4 +32,6 @@ it is
 ### for backend
     npm server.js
 
+### Both 
+    npm start
 ## Expanding the ESLint configuration
