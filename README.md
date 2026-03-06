@@ -5,10 +5,24 @@ it is therd party ads netwerking patheform like
 -  meta ads 
 -  meadia net
 
+### Work 
+- Help to intigract ads on owen applicatin in just 5 
+
+
 ## Tech stacks
+
+### Support tech
+    Html
+    React js
+    React Native
+
+### Upcoming Support Tech
+    Anguler.js
+    Next.js
 - ## Frontend
-  - React.js + Vite, 
+  - React.js + Vite,
   - TailwindCss
+  - Gsap
 - ## Backend
     - Node.js
     - Express.js
@@ -16,7 +30,7 @@ it is therd party ads netwerking patheform like
 - ## Security
     - JWT
 
-- ##  cache
+- ##  Cache
     - Redis
 - ## Storege 
     - Mega.nz - not good but good for small project and with 20GB
