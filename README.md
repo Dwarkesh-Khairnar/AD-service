@@ -31,7 +31,7 @@ it is therd party ads netwerking patheform like
     - JWT
 
 - ##  Cache
-    - Redis
+    - Redis  - Open source
 - ## Storege 
     - Mega.nz - not good but good for small project and with 20GB
 
