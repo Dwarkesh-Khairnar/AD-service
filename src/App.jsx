@@ -12,7 +12,6 @@ import Docs from './Components/Pages/Docs.jsx';
 import Ad_runner from './Components/Ads components/Ad_auto_runing_component.jsx';
 import AdUpload from "./Components/Ads Uploads/ad_upload.jsx";
 import KeyPage from "./Components/Auth/Key.jsx";
-import Temp from "./temp.jsx";
 import Footer from "./Components/Pages/Footer.jsx";
 
 function App() {
