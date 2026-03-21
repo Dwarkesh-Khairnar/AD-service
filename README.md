@@ -11,7 +11,7 @@ it is therd party ads netwerking patheform like
 
 ## Tech stacks
 
-### Support tech
+### Support tech for ads run on app
     Html
     React js
     React Native

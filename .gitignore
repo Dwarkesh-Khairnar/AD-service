@@ -23,9 +23,10 @@ tempServer.js
 temp.jsx
 z-temp.html
 z-Postgresql.txt
-z-git commands.txt
+z-git commands.md
 z-plan.txt
 z-one.tldr
+z-redis commands.md
 
 tmp_uploads
 RECOVERYKEY.txt
