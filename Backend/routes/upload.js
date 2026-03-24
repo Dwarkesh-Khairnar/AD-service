@@ -39,9 +39,7 @@ router.post("/upload-video", upload.any(), async (req, res) => {
 
     console.log("Logged in");
 
-    // ------------------------------
-    // 👉 STEP 1: Get (or create) folder
-    // ------------------------------
+    // Get (or create) folder
     const folderName = "Ads";  // change folder name here
 
     let folder = storage.root.children.find(
@@ -56,9 +54,7 @@ router.post("/upload-video", upload.any(), async (req, res) => {
       console.log("Folder found:", folderName);
     }
 
-    // ------------------------------
-    // 👉 STEP 2: Upload file *inside folder*
-    // ------------------------------
+    // Upload file *inside folder*
     const fileStream = fs.createReadStream(fileMeta.path);
 
     const uploadStream = folder.upload(
@@ -83,7 +79,6 @@ router.post("/upload-video", upload.any(), async (req, res) => {
     console.log("Link:" + link, "Embedlink :" + Embedlink);
 
     // Database Link Adding section
-
     try {
       const result = await client.query(`Insert into public.ad_links(work_mail,video_link)values($1,$2) RETURNING*`, [mail, Embedlink]);
       console.log("Inserted row", result.rows);
