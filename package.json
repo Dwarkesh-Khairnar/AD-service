@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "concurrently \"vite\" \"node backend/server.js\"",
+    "start": "concurrently \"vite\" \"nodemon backend/server.js\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -26,7 +26,6 @@
     "multer": "^2.0.2",
     "node-cache": "^5.1.2",
     "nodemon": "^3.1.11",
-    "peer": "^1.0.2",
     "peerjs": "^1.5.5",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
