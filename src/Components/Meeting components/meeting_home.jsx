@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"; // Import Router components
-import Meet_form from "../../assets/Meet_form.svg";
-import Meet_join from "../../assets/Meet_join.svg";
+import Meet_form from "../../assets/meet_form.svg";
+import Meet_join from "../../assets/meet_join.svg";
 import man_reisent from "../../assets/desiner_on_laptop_back.svg";
 function meeting_home() {
   return (
