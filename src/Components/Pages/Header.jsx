@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-//import logo from "../../assets/img/logo_ad.png";
 
 const flex_hoverUnderlineClass =
   "relative cursor-pointer " +
@@ -33,7 +32,7 @@ function Header() {
     <>
       <header className="bg-transparent fixed w-screen z-15">
       <div  className="w-screen mx-auto flex items-center font-thin text-blue-100 justify-between h-16 px-4">
-        <img src={logo} alt="Logo" className="w-13" />
+        <img src="https://i.ibb.co/tp0HGvKN/logo-ad.png" alt="Logo" className="w-13" />
         <div>
           <ul className="flex gap-3">
             <li className={flex_hoverUnderlineClass}><Link to="/">Home</Link></li>
