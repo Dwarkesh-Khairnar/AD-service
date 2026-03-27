@@ -37,14 +37,15 @@ function ad_upload() {
 
       const xhr = new XMLHttpRequest();
 
-      xhr.open("POST", "http://localhost:3000/uvideo/upload-video", true);
+      xhr.open("POST", "/api/uvideo/upload-video", true);
 
       xhr.onload = () => {
+        setUploading(false); // Stop the loading state
         if (xhr.status >= 200 && xhr.status < 300) {
-          console.log(resolve(xhr.response));
+          // console.log(resolve(xhr.response));
           addLog(`Upload succeeded: ${xhr.responseText}`, "success");
         } else {
-          console.log(reject(new Error("Upload failed: " + xhr.statusText)));
+          // console.log(reject(new Error("Upload failed: " + xhr.statusText)));
           addLog(`Upload failed: ${xhr.status} ${xhr.statusText}`)
         }
       };
