@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "concurrently \"vite\" \"nodemon backend/server.js\"",
+    "start": "concurrently \"vite\" \"nodemon api/index.js\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
