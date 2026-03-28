@@ -12,7 +12,7 @@ router.use(cors());
 
 // Multer temp folder
 const upload = multer({
-  dest: path.join(process.cwd(), "tmp_uploads/")
+   storage: multer.memoryStorage() 
 });
 
 // API: Upload video to MEGA
