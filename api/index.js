@@ -8,7 +8,7 @@ import apiRoutes from "./routes/apiRoutes.js"
 import uploadRoutes from "./routes/upload.js"
 
 dotenv.config();
-const PORT = process.env.BACK_PORT
+const PORT = process.env.BACK_PORT || 5000
 const app = express();
 app.use(cors());           // allow frontend to call backend
 app.use(express.json());   // parse JSON bodies
