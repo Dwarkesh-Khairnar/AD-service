@@ -1,4 +1,4 @@
-// backend/server.js
+// api/index.js
 import express from "express";
 import cors from 'cors'
 import dotenv from 'dotenv';
@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 
 const SK = process.env.jwtSK;
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send(`<div style="height: 100%; width: 100%; ">
 
 <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
@@ -45,20 +45,20 @@ function authToken(req, res, next) {
     })
 }
 
-app.get('/testjwt', async (req, res) => {
+app.get('/api/testjwt', async (req, res) => {
     const username = "D"; // Simple user check
     token = jwt.sign({ username }, SK, { expiresIn:'20s' });        // Extend expiresin
     res.json({ token });
 })
 
-app.get('/test', authToken, (req, res) => {
+app.get('/api/test', authToken, (req, res) => {
     return res.status(200).json({ "Update": "Token works","Token":token})
     
 })
 
 // Api routes
-app.use('/Curl', apiRoutes);
-app.use('/uvideo', uploadRoutes);
+app.use('/api/Curl', apiRoutes);
+app.use('/api/uvideo', uploadRoutes);
 
 // THIS IS THE SECRET:
 if (process.env.NODE_ENV !== 'production') {
