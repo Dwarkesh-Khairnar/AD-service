@@ -5,7 +5,6 @@ dotenv.config();
 
 const SK = process.env.jwtSK;
 
-let token;                                                          // Need to store in redis cache
 function verifyToken(token) {
 
     try {
