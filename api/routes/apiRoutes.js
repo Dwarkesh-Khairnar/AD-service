@@ -5,17 +5,15 @@ import { client, connectDatabase } from '../db/dbConnection.js'
 
 const router = express.Router();
 connectDatabase();
-// Test API route
 
+// Test API route
 router.get('/get_data', async (req, res) => {
     try {
         const result = await client.query('select * from users limit 20;');
-
-        res.json(result.rows)
+        res.status(200).json("User data"+result.rows)
     } catch (error) {
         console.log("Error:", error);
-        res.json({ massega: "Error:" + error })
-
+        res.status(400).json({ massega: "Error:" + error })
     }
 });
 
