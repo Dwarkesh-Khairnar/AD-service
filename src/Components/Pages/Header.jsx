@@ -14,7 +14,7 @@ function Header() {
   const [sidenav, setsidenav] = useState(false);
   const [svg, setSvg] = useState(1);
   const svgs = [
-    <svg viewBox="4 0 500 450" fill="#DD0303 ">
+    <svg viewBox="4 0 500 450" fill="#fa812f ">
       <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
     </svg>,
     <svg viewBox="4 0 500 450" fill="#fa812f">
@@ -30,7 +30,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-transparent fixed w-screen z-15">
+      <header className="bg-transparent fixed w-screen z-15 border-b">
       <div  className="w-screen mx-auto flex items-center font-thin text-blue-100 justify-between h-16 px-4">
         <img src="https://i.ibb.co/tp0HGvKN/logo-ad.png" alt="Logo" className="w-13" />
         <div>
@@ -44,7 +44,8 @@ function Header() {
         </div>
         <div className="flex z-50">
           <button className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">
-            +New
+            <Link to={"/singup"} >SingUp</Link>
+            
           </button>
           <div
             className="block md:hidden mr-0 m-2 w-6 cursor-pointer z-50"
@@ -57,7 +58,6 @@ function Header() {
         </div>
         </div>
       </header>
-
       <div
       id="sidenav"
       className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-900 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-full":"y-full opacity-0 z-50 h-0"}`}
@@ -72,7 +72,7 @@ function Header() {
             <li className="my-4 text-4xl font-extrabold opacity-50 text-amber-50"  onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule <br /> Meeting</Link>{" "}</li>
             <li className="my-4 text-4xl"                                            onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
             <li className="my-4 text-4xl font-bold text-gray-800"                  onClick={toggleSidenav}>{" "}<Link to="/Contact">Contact</Link>{" "}</li>
-            <li className="my-4 text-4xl font-semibold opacity-55"                   onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
+            {/* <li className="my-4 text-4xl font-semibold opacity-55"                   onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li> */}
             <li className="my-4 text-2xl opacity-70 bottom-5 fixed"                  onClick={toggleSidenav}>{" "}<Link to="/Instagram">Instagram</Link></li>                                      {/* TODO: Add working links*/}
             <li className="my-4 text-2xl opacity-70 bottom-13 fixed"                 onClick={toggleSidenav}>{" "}<Link to="https://google.com">LinkedIn</Link></li>                               {/*TODO: ADD WORKINK LINKEDIN LINK*/}
           </ul>
