@@ -3,8 +3,11 @@ import express from "express";
 import cors from 'cors'
 import dotenv from 'dotenv';
 import bodyParser from "body-parser";
+
+// Files/Routes
 import apiRoutes from "./routes/apiRoutes.js"
 import uploadRoutes from "./routes/upload.js"
+import AuthRoutes from './routes/AuthRoutes.js'
 
 // Middleware
 import authenticateToken from "./Middleware/authMiddleware.js";
@@ -34,16 +37,13 @@ app.get("/api", (req, res) => {
 });
 
 app.get('/test', authenticateToken, (req, res) => {
-    return res.json({ message: "AuthWorks and protecteed", user: res.data })
-})
-
-app.post('/login', (req, res) => {
-    const Data = req.body;
-    const token = jwtService.createToken({ Data });
-    res.json({ token })
+    const data = req.body;
+    console.log('Data From Backend:', data)
+    return res.status(200).json({ "Data": data })
 })
 
 // Api routes
+app.use('/api/Auth', AuthRoutes);
 app.use('/api/Curl', apiRoutes);
 app.use('/api/uvideo', uploadRoutes);
 
