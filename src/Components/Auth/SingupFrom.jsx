@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 function SingupFrom() {
+    const [responseMessage, setResponseMessage] = useState('');
     const [FormData, setformData] = useState({
-      "Company_Name":"",
+      "company_name":"",
       "mail":"",
-      "Secondry_mail":"",
+      "secondary_mail":"",
       "role":"",
       "password":"",
       "Confirm_password":"",
@@ -14,15 +15,16 @@ function SingupFrom() {
 
     const SubmitHandel=(event)=>{
         event.preventDefault();
-        console.log('FormData', FormData)
-        
-        axios.post("http://localhost:5000/testData",FormData)
+        // console.log('FormData Form Frontend:', FormData)
+          
+        axios.post("http://localhost:5000/api/Auth/singUp",FormData)
         .then((response)=>{
-           setResponseMessage("Post created successfully!");
+           setResponseMessage("Post created successfully!"+JSON.stringify(response.data));
         })
         .catch((err)=>{
            setResponseMessage("Error creatingPost",err);
         })
+        console.log(responseMessage);
     }
 
     const valueAddHandelr = (event)=>{
@@ -57,7 +59,7 @@ function SingupFrom() {
               id="name"
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your company name"
-              name='Company_Name'
+              name='company_name'
               onChange={valueAddHandelr}
               />
           </div>
@@ -92,7 +94,7 @@ function SingupFrom() {
               id="email"
               className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your email"
-              name='Secondry_mail'
+              name='secondary_mail'
               onChange={valueAddHandelr}
               />
           </div>
