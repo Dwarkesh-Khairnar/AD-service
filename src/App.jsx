@@ -13,6 +13,7 @@ import Ad_runner from './Components/Ads components/Ad_auto_runing_component.jsx'
 import AdUpload from "./Components/Ads Uploads/ad_upload.jsx";
 import KeyPage from "./Components/Auth/Key.jsx";
 import Footer from "./Components/Pages/Footer.jsx";
+import SingupFrom from "./Components/Auth/SingupFrom.jsx";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -59,6 +60,7 @@ function App() {
             <Route path="/docs" element={<Docs />} />
             <Route path="/contact" element={<Hero />} />
             <Route path="/adupload" element={<AdUpload/>} />
+            <Route path="/singup" element={<SingupFrom/>} />
             <Route path="/key_page" element={<KeyPage/>} />
             <Route path="/ad_runner" element={<Ad_runner/>} />
             <Route path="/temp" element={<Footer/>} />
