@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {Link} from "react-router-dom"
 import axios from 'axios'
 
 function SingupFrom() {
@@ -174,9 +175,17 @@ function SingupFrom() {
             </button>
           </div>
         </form>
-      
+
+       <p className="text-sm text-center text-gray-600">
+            Already have an account{" : "}
+              <Link to="/loginFrom">
+                  <span className="text-amber-500 hover:underline hover:text-green-600">
+                   Login
+                  </span>
+              </Link>
+        </p>
         </div>
-        </div>
+      </div>
     </>
   )
 }
