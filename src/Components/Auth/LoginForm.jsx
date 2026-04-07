@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function LoginForm() {
+  const [data, setData] = useState({})
+
+  const SubmitHandel = (e) => {
+    e.preventDefault();
+    console.log(data);
+
+  }
+
+  const valueAddHandelr = (event) => {
+    const { name, value } = event.target;
+
+    setData((privalue) => ({
+      ...privalue,
+      [name]: value
+    }))
+  }
+
   return (
     <>
-      <div className="h-16"></div>
+      {/* <div className="h-16"></div> */}
       <div className="h-full flex justify-center items-center min-h-screen ">
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-xl ">
           <h2 className="text-2xl font-bold text-center text-gray-800">
             Login
           </h2>
 
-          <form action="" method="post" className=" space-y-5">
+          <form onSubmit={SubmitHandel} className="space-y-5">
             <div>
               <label htmlFor="Mail">Mail</label>
               <input
                 type="email"
                 name="email"
+                onChange={valueAddHandelr}
                 className="shadow border rounded-md p-1 w-full border-gray-500 text-gray-800"
               />
             </div>
@@ -26,7 +44,8 @@ function LoginForm() {
               <input
                 type="password"
                 name="hast"
-                className="shadow border rounded-md p-1 w-full border-gray-500 text-gray-800 "
+                onChange={valueAddHandelr}
+                className="shadow border rounded-md p-1 w-full border-gray-500 text-gray-800"
               />
             </div>
 
