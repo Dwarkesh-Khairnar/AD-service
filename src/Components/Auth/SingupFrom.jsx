@@ -22,11 +22,11 @@ function SingupFrom() {
       .post("http://localhost:5000/api/Auth/singUp", FormData)
       .then((response) => {
         setResponseMessage(
-          "Post created successfully!" + JSON.stringify(response.data)
+          "User created successfully!" + JSON.stringify(response.data)
         );
       })
       .catch((err) => {
-        setResponseMessage("Error creatingPost", err);
+        setResponseMessage("Error creating User", err);
       });
     console.log(responseMessage);
   };
