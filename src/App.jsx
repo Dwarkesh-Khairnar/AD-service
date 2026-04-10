@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Router components
 import Header from "./Components/Pages/Header";
 import Hero from "./Components/Pages/Hero";
@@ -16,6 +16,9 @@ import Footer from "./Components/Pages/Footer.jsx";
 import SingupFrom from "./Components/Auth/SingupFrom.jsx";
 import LoginForm from "./Components/Auth/LoginForm.jsx";
 
+// Frontend Middleware
+import Protection from "./Components/Auth/Middleware/protection.jsx";
+
 function App() {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
@@ -31,64 +34,64 @@ function App() {
     loadData();
   }, []);
 
-  
+
   return (
-//  <div>
-//   <Temp/>
-//    {/* <AdUpload/> */}
-//    {/* <Fileuploade/> */}
+    //  <div>
+    //   <Temp/>
+    //    {/* <AdUpload/> */}
+    //    {/* <Fileuploade/> */}
 
-// </div> 
+    // </div> 
 
-   
-  
+
+
     <Router>
       {loading ? (
-          <Loding />
-        ) : (
-        
+        <Loding />
+      ) : (
+
         <div style={{ fontFamily: "sans-serif" }}>
           <Header />
           {/* <Hero/> */}
-            <main className="">
-          <Routes>
-            <Route path="" element={<Hero />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/plans" element={<Plans />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/meetjoin" element={<Meetjoin />} />
-            <Route path="/client" element={<Client />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="/contact" element={<Hero />} />
-            <Route path="/adupload" element={<AdUpload/>} />
-            <Route path="/singup" element={<SingupFrom/>} />
-            <Route path="/login" element={<LoginForm/>} />
-            <Route path="/key_page" element={<KeyPage/>} />
-            <Route path="/ad_runner" element={<Ad_runner/>} />
-            <Route path="/temp" element={<Footer/>} />
-            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-            {/* Add more routes as needed */}
-          </Routes>
-        </main>
-          <Footer/>
+          <main className="">
+            <Routes>
+              <Route path="" element={<Hero />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/plans" element={<Plans />} />
+              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/meetjoin" element={<Meetjoin />} />
+              <Route path="/client" element={<Client />} />
+              <Route path="/docs" element={<Docs />} />
+              <Route path="/contact" element={<Hero />} />
+              <Route path="/adupload" element={<Protection><AdUpload /></Protection>} />
+              <Route path="/singup" element={<SingupFrom />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/key_page" element={<KeyPage />} />
+              <Route path="/ad_runner" element={<Ad_runner />} />
+              <Route path="/temp" element={<Footer />} />
+              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+              {/* Add more routes as needed */}
+            </Routes>
+          </main>
+          <Footer />
         </div>
-        )}
-      </Router>
-    );
-  }
-  
-  export default App;
-  
-  // const handleHeroSubmit = async (data) => {
-  //   try {
-  //     const res = await fetch("http://localhost:5000/api/submit", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(data),
-  //     });
-  //     const result = await res.json();
-  //     setResponse(result.message);
-  //   } catch (err) {
-  //     setResponse("Error sending data ❌");
-  //   }
-  // };
+      )}
+    </Router>
+  );
+}
+
+export default App;
+
+// const handleHeroSubmit = async (data) => {
+//   try {
+//     const res = await fetch("http://localhost:5000/api/submit", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(data),
+//     });
+//     const result = await res.json();
+//     setResponse(result.message);
+//   } catch (err) {
+//     setResponse("Error sending data ❌");
+//   }
+// };
