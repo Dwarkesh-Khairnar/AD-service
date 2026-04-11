@@ -13,11 +13,11 @@ function LoginForm() {
     try {
       const result = axios.post("http://localhost:5000/api/Auth/singin", data)
       if (result.lenght === 0) setResponseMessage("Server not respond")
-        setResponseMessage("Login successfull")
+      setResponseMessage("Login successfull")
     }
     catch (error) {
       console.error("Error on login process" + error);
-      setResponseMessage("Error on login"+error)
+      setResponseMessage("Error on login" + error)
     }
   }
 
