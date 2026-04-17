@@ -14,13 +14,11 @@ function LoginForm() {
     try {
       const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
       if (result.data.lenght === 0) setResponseMessage("Server not respond")
-      console.log("Frntend aaxios:", result);
 
       setResponseMessage("Login successfull")
       setResponseColor({ color: "green" })
     }
     catch (error) {
-      console.error("Error on login process" + error);
       setResponseMessage("Error on login" + error)
       setResponseColor({ color: "red" })
     }
