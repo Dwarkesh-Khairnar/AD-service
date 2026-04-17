@@ -5,19 +5,24 @@ import axios from 'axios'
 function LoginForm() {
   const [data, setData] = useState({})
   const [responseMessage, setResponseMessage] = useState("");
+  const [responseColor, setResponseColor] = useState({});
 
-  const SubmitHandel = (e) => {
+  const SubmitHandel = async (e) => {
     e.preventDefault();
-    console.log(data);
+    console.log("Frontend:", data);
 
     try {
-      const result = axios.post("http://localhost:5000/api/Auth/singin", data)
-      if (result.lenght === 0) setResponseMessage("Server not respond")
+      const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
+      if (result.data.lenght === 0) setResponseMessage("Server not respond")
+      console.log("Frntend aaxios:", result);
+
       setResponseMessage("Login successfull")
+      setResponseColor({ color: "green" })
     }
     catch (error) {
       console.error("Error on login process" + error);
       setResponseMessage("Error on login" + error)
+      setResponseColor({ color: "red" })
     }
   }
 
@@ -47,6 +52,7 @@ function LoginForm() {
                 name="email"
                 onChange={valueAddHandelr}
                 className="shadow border rounded-md p-1 w-full border-gray-500 text-gray-800"
+                required
               />
             </div>
 
@@ -67,6 +73,10 @@ function LoginForm() {
               Login
             </button>
           </form>
+
+          <p className="w-full text-center" style={responseColor}>
+            <span>{responseMessage}</span>
+          </p>
 
           <p className="w-full text-center">
             Don't have an account? <Link to="/singup" className="text-amber-500 hover:text-green-500 hover:underline">Sing-Up</Link>
