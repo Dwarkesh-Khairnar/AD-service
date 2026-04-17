@@ -6,7 +6,5 @@ export default function protection({ children }) {
 
    if (!token) return <Navigate to="/login" replace />;
 
-   return <Navigate to="/login" replace />;
-
    return children;
 }
