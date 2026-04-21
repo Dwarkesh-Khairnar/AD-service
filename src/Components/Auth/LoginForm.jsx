@@ -1,25 +1,31 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 function LoginForm() {
   const [data, setData] = useState({})
   const [responseMessage, setResponseMessage] = useState("");
   const [responseColor, setResponseColor] = useState({});
+  const [Redirect, setRedirect] = useState("/login")
+  const Navigate = useNavigate();
 
   const SubmitHandel = async (e) => {
     e.preventDefault();
-    console.log("Frontend:", data);
 
     try {
       const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
       if (result.data.lenght === 0) setResponseMessage("Server not respond")
 
+      // Store token in localStorage 
+      localStorage.setItem("token", result.data.secret)
+
       setResponseMessage("Login successfull")
       setResponseColor({ color: "green" })
+      Navigate('/')
     }
     catch (error) {
-      setResponseMessage("Error on login" + error)
+      console.log(error)
+      setResponseMessage("Error on login: " + error)
       setResponseColor({ color: "red" })
     }
   }
@@ -61,6 +67,7 @@ function LoginForm() {
                 name="hast"
                 onChange={valueAddHandelr}
                 className="shadow border rounded-md p-1 w-full border-gray-500 text-gray-800"
+                required
               />
             </div>
 
