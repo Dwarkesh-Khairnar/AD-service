@@ -24,8 +24,7 @@ function LoginForm() {
       Navigate('/')
     }
     catch (error) {
-      console.log(error)
-      setResponseMessage("Error on login: " + error)
+      setResponseMessage(error.response.data.message)
       setResponseColor({ color: "red" })
     }
   }
