@@ -45,7 +45,7 @@ app.get('/test', authenticateToken, (req, res) => {
 // Api routes
 app.use('/api/Auth', AuthRoutes);
 app.use('/api/Curl', apiRoutes);
-app.use('/api/uvideo', uploadRoutes);
+app.use('/api/uvideo',authenticateToken, uploadRoutes);
 
 // THIS IS THE SECRET:
 if (process.env.NODE_ENV !== 'production') {
