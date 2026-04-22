@@ -26,9 +26,8 @@ function SingupFrom() {
         );
       })
       .catch((err) => {
-        setResponseMessage("Error creating User", err);
+        setResponseMessage("Error"+ err);
       });
-    console.log(responseMessage);
   };
 
   const valueAddHandelr = (event) => {
@@ -59,7 +58,7 @@ function SingupFrom() {
               </label>
               <input
                 type="text"
-                id="name"
+                id="company_name"
                 className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your company name"
                 name="company_name"
@@ -174,6 +173,12 @@ function SingupFrom() {
                 SingUp
               </button>
             </div>
+
+            {/*  temp response setup */}
+            {/* replace with tost or notification banner */}
+          <p>
+            <span>{responseMessage}</span>
+          </p>
           </form>
 
           <p className="text-sm text-center text-gray-600">
