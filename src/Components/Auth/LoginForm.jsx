@@ -1,31 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import lodingPage from "../loding";
 import axios from 'axios'
 
 function LoginForm() {
   const [data, setData] = useState({})
   const [responseMessage, setResponseMessage] = useState("");
   const [responseColor, setResponseColor] = useState({});
-  const [Redirect, setRedirect] = useState("/login")
+  const [loding, setloding] = useState(false)
   const Navigate = useNavigate();
 
   const SubmitHandel = async (e) => {
     e.preventDefault();
 
     try {
+      setloding(true);
       const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
       if (result.data.lenght === 0) setResponseMessage("Server not respond")
-
       // Store token in localStorage 
       localStorage.setItem("token", result.data.secret)
 
       setResponseMessage("Login successfull")
       setResponseColor({ color: "green" })
-      Navigate('/')
+
+      if (result.statusText) {
+        setTimeout(() => {
+          Navigate('/')
+          setloding(false)
+        }, 3000);
+      }
     }
     catch (error) {
       setResponseMessage(error.response.data.message)
       setResponseColor({ color: "red" })
+      setloding(false)
     }
   }
 
@@ -74,7 +82,7 @@ function LoginForm() {
               type="submit"
               className="w-full py-2 px-4 rounded-md text-white bg-amber-500 hover:bg-green-500"
             >
-              Login
+              {loding? <lodingPage/>:"login"}  // temp loginf try
             </button>
           </form>
 
