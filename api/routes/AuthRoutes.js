@@ -44,10 +44,11 @@ router.post("/singIn", async (req, res) => {
         }
 
         // token worker
-        const token = jwtService.createToken(logInData)
+        const token = jwtService.createToken(logInData);
+
         if (!token) return res.status(503).json({ "message": "Jwt service not work" })
 
-        return res.status(200).json({ Data: logInData, secret: token })
+        return res.status(200).json({ Data: logInData, secret: token, message: "Login successfull" })
     } catch (error) {
         return res.status(500).json({ message: "error on login", Error: error })
     }
