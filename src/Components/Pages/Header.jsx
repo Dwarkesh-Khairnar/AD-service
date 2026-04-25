@@ -4,11 +4,11 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 const flex_hoverUnderlineClass =
   "relative cursor-pointer " +
   "after:content-[''] after:absolute after:left-0 after:bottom-[-0px] " +
-  "after:w-0 after:h-[1.5px] after:bg-[#071025] " +
+  "after:w-0 after:h-[1.5px] after:bg-[#dff] " +
   "after:transition-width after:duration-400 after:ease-linear " +
   "hover:after:w-full " +
   "z-50 hidden md:block " +
-  "hover:text-[#071025]";
+  "hover:text-[#dff]";
 
 function Header() {
   const [sidenav, setsidenav] = useState(false);
@@ -31,7 +31,7 @@ function Header() {
   return (
     <>
       <header className="bg-transparent fixed w-screen z-15 border-b">
-      <div  className="w-screen mx-auto flex items-center font-thin text-blue-100 justify-between h-16 px-4">
+      <div  className="w-screen mx-auto flex items-center font-semibold text text-gray-800 justify-between h-16 px-4">
         <img src="https://i.ibb.co/tp0HGvKN/logo-ad.png" alt="Logo" className="w-13" />
         <div>
           <ul className="flex gap-3">
@@ -48,7 +48,7 @@ function Header() {
             
           </button>
           <div
-            className="block md:hidden mr-0 m-2 w-6 cursor-pointer z-50"
+            className="block md:hidden ml-2 w-6 cursor-pointer z-50"
             onClick={toggleSidenav}
             aria-expanded={sidenav}
             aria-controls="sidenav"
@@ -65,7 +65,7 @@ function Header() {
         <div className=" absolute top-0 w-full h-full bg-amber-400 z-10 border-l-2 border-white">
           <hr className="mt-10 text-transparent" />
 
-          <ul className={`mt-8 fixed inset-0 top-30 left-15 transform transition-all duration-400 ease-in-out ${sidenav ? "block":"hidden"}`}>
+          <ul className={`mt-8 fixed inset-0 top-30 left-15 transform transition-all duration-400 ease-in-out mix-blend-difference ${sidenav ? "block":"hidden"}`}>
             <li className="my-4 text-5xl font-bold text-amber-50 opacity-55"       onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
             <li className="my-4 text-4xl font-stretch-50% text-gray-800"           onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
             <li className="my-4 text-5xl"                                            onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
