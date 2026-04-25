@@ -30,7 +30,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-transparent fixed w-screen z-15 border-b">
+      <header className="bg-transparent fixed w-screen z-15">
       <div  className="w-screen mx-auto flex items-center font-semibold text text-gray-800 justify-between h-16 px-4">
         <img src="https://i.ibb.co/tp0HGvKN/logo-ad.png" alt="Logo" className="w-13" />
         <div>
