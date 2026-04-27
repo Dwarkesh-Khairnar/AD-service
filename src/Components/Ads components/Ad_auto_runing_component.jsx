@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { Navigate, redirect } from "react-router-dom";
 
 function ad_runner({ children }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [timesing, setTimesing] = useState(true);
   const [cross, setCross] = useState(false);
   const [cundown, setCundown] = useState("");
+  const [adlink, setAdlink] = useState("");
+  const [targetlink, settargetlink] = useState("");
   const [resetskip, setresetskip] = useState(0);
+  const [inactiveter, setinactiveter] = useState(0)
   const timerRef = useRef(null);
   const inactivity_time = 5000;
   const skiptime = 5;
@@ -14,7 +19,8 @@ function ad_runner({ children }) {
   // Skip button display timeing
   const skipstart = () => {
     setTimesing(true);
-    setShowOverlay(true);
+    // setShowOverlay(true);
+    if(!showOverlay) setShowOverlay(true)
     setCross(false);
     for (let index = skiptime; index >= 0; index--) {
       setTimeout(() => {
@@ -30,6 +36,7 @@ function ad_runner({ children }) {
 
   const closeOverlay = () => {
     setShowOverlay(false);
+        setinactiveter(0)
   };
 
   const resetTimer = () => {
@@ -72,6 +79,28 @@ function ad_runner({ children }) {
     };
   }, [showOverlay]);
 
+  useEffect(() => {
+  if (showOverlay && inactiveter === 0) {
+    const fetchData = async () => {
+      try {
+        let result = await axios.get("http://localhost:5000/api/Curl/fetch-ad");
+        console.log(result.data.ad_link,result.data.target_link);
+        setAdlink(result.data.ad_link)
+        settargetlink(result.data.ad_link)
+        setinactiveter(1);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }
+}, [showOverlay, inactiveter]);
+
+const redirectto=()=>{
+    window.location.href=targetlink;
+}
+  
+
   return (
     <div className="app">
       {children}
@@ -85,6 +114,7 @@ function ad_runner({ children }) {
           <div
             className="bg-white p-2 rounded-2xl text-center relative"
             onClick={(e) => e.stopPropagation()}
+            onClick={redirectto}
           >
             {/* Skip Timeing button */}
             {timesing && (
@@ -115,8 +145,9 @@ function ad_runner({ children }) {
                 width={"100%"}
                 height={"100%"}
                 frameborder="0"
-                src="https://mega.nz/embed/Hcs2UQob#Qphj3vweCFAj1ATE_y2nrx3qsrIpFVnJ4erIxhbQtvo!1a1m"
+                // src="https://mega.nz/embed/Hcs2UQob#Qphj3vweCFAj1ATE_y2nrx3qsrIpFVnJ4erIxhbQtvo!1a1m"
                 // src="https://mega.nz/file/Hcs2UQob#Qphj3vweCFAj1ATE_y2nrx3qsrIpFVnJ4erIxhbQtvo"
+                src={adlink}
                 allowfullscreen
               ></iframe>
             </div>
