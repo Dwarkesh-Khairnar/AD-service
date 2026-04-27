@@ -10,6 +10,7 @@ function Docs() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 font-sans">
+      <div className="mt-20"></div>
       {/* Header */}
       <div className="bg-linear-to-r from-amber-400 to-amber-600 text-white p-8 rounded-2xl shadow-lg mb-8">
         <h1 className="text-4xl font-bold mb-2">Ad Service Integration Documentation</h1>
@@ -105,6 +106,7 @@ app.get('/api/request-ad', async (req, res) => {
 
 app.listen(PORT, () => console.log('Running on ' + PORT));`)} className="absolute right-3 top-3 bg-blue-500 px-3 py-1 text-sm rounded">Copy</button>
               </div>
+              Note: You need seller's developer interaction
             </div>
           </div>
         </div>
@@ -117,60 +119,46 @@ app.listen(PORT, () => console.log('Running on ' + PORT));`)} className="absolut
             <pre className="language-js text-sm overflow-auto">npx create-react-app user-frontend</pre>
             <button onClick={() => copyToClipboard("npx create-react-app user-frontend")} className="absolute right-3 top-3 bg-blue-500 px-3 py-1 text-sm rounded">Copy</button>
           </div>
+          <p className=" text-gray-600 m-2 ">main.jsx</p>
 
           <div className="relative bg-gray-900 text-white p-4 rounded-xl shadow-md">
             <pre className="language-js text-sm overflow-auto">{`import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import Ad_runing_component from "https://ad-serviec.com/file/Ad_auto_runing_component.jsx";
 
-export default function App() {
-  const [videoLink, setVideoLink] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:4000/api/request-ad')
-      .then(res => setVideoLink(res.data.videoLink));
-  }, []);
-
-  return (
-    <div className='p-6'>
-      <h1 className='text-2xl font-bold mb-4'>Ad Display</h1>
-      {videoLink ? (
-        <video controls className='rounded-lg border shadow-md'>
-          <source src={videoLink} type="video/mp4" />
-        </video>
-      ) : 'Loading...'}
-    </div>
-  );
-}
-
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Ad_runing_component> 
+      <App />
+    </Ad_runing_component>
+  </React.StrictMode>
+);
 
 
 `}</pre>
-            <button onClick={() => copyToClipboard(`import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+            <button onClick={() => copyToClipboard(`import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import Ad_runing_component from "https://ad-service.com/file/Ad_auto_runing_component.jsx";
 
-export default function App() {
-  const [videoLink, setVideoLink] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:4000/api/request-ad')
-      .then(res => setVideoLink(res.data.videoLink));
-  }, []);
-
-  return (
-    <div className='p-6'>
-      <h1 className='text-2xl font-bold mb-4'>Ad Display</h1>
-      {videoLink ? (
-        <video controls className='rounded-lg border shadow-md'>
-          <source src={videoLink} type="video/mp4" />
-        </video>
-      ) : 'Loading...'}
-    </div>
-  );
-}`)} className="absolute right-3 top-3 bg-blue-500 px-3 py-1 text-sm rounded">Copy</button>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Ad_runing_component> 
+      <App />
+    </Ad_runing_component>
+  </React.StrictMode>
+);
+`)} className="absolute right-3 top-3 bg-blue-500 px-3 py-1 text-sm rounded">Copy</button>
           </div>
         </div>
 
         {/* NEW — Next.js Integration */}
+        {/*
         <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-200">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900">4. Next.js Frontend Setup</h2>
 
@@ -228,11 +216,11 @@ export default function Page() {
   );
 }`)} className="absolute right-3 top-3 bg-blue-500 px-3 py-1 text-sm rounded">Copy</button>
           </div>
-        </div>
+        </div> */}
 
         {/* NEW — HTML Integration */}
         <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-200">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900">5. Plain HTML / JavaScript Integration</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-900">4. Plain HTML / JavaScript Integration</h2>
 
           <h3 className="text-xl font-semibold mb-2 text-gray-800">index.html</h3>
           <div className="relative bg-gray-900 text-white p-4 rounded-xl shadow-md">
