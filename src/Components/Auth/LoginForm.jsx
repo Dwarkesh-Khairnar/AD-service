@@ -82,7 +82,10 @@ function LoginForm() {
               type="submit"
               className="w-full py-2 px-4 rounded-md text-white bg-amber-500 hover:bg-green-500"
             >
-              {loding? <lodingPage/>:"login"}  // temp loginf try
+              {loding ? <span className="positionDiv left-[50%]"> 
+                <span className="h-5 w-1 mr-2 bg-black rounded-full">.</span>
+                <span className="h-5 w-1 mr-2 bg-black rounded-full animate-blink">.</span>
+                <span className="h-5 w-1 bg-black rounded-full animate-leftmove"></span> </span> : "login"}                                                                               {/* Temp loding */}
             </button>
           </form>
 
@@ -99,6 +102,39 @@ function LoginForm() {
           </p>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes leftmove {
+          0% {
+            left: 50%;
+          }
+          100% {
+            left: 70%;
+            opacity: 0;
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes blink {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1; /* Changed from 10 to 1 */
+            transform: rotate(-12deg);
+          }
+        }
+        .animate-leftmove {
+          position: absolute;
+          animation: leftmove 1.5s infinite;
+          border-radius: 20px;
+        }
+        .animate-blink {
+          animation: blink 1.5s infinite;
+          border-radius: 20px;
+        }
+        .positionDiv{
+        }
+      `}</style>
     </>
   );
 }
