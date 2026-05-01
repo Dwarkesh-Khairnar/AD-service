@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import apiRoutes from "./routes/apiRoutes.js"
 import uploadRoutes from "./routes/upload.js"
 import AuthRoutes from './routes/AuthRoutes.js'
+import dashboard from "./routes/dashboardRoutes.js";
 
 // Middleware
 import authenticateToken from "./Middleware/authMiddleware.js";
@@ -44,8 +45,9 @@ app.get('/test', authenticateToken, (req, res) => {
 
 // Api routes
 app.use('/api/Auth', AuthRoutes);
-app.use('/api/Curl', apiRoutes);
+app.use('/api/curl', apiRoutes);
 app.use('/api/uvideo',authenticateToken, uploadRoutes);
+app.use('/api/dashboard', dashboard);
 
 // THIS IS THE SECRET:
 if (process.env.NODE_ENV !== 'production') {
