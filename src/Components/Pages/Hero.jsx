@@ -73,7 +73,7 @@ function Hero() {
   return (
     <>
     {/* Scrolling animation */}
-      <div className="bg-teal-400 z-1 h-[90%] w-screen absolute" ref={scroll1}>
+      <div className="bg-teal-400 z-1 h-[90%] w-full absolute" ref={scroll1}>
         <span
           className="absolute font-bold hidden text-amber-300 md:text-[42vh] md:top-0 md:inset-s-20 md:block mask-linear-from-amber-900"
           ref={scroll2}
