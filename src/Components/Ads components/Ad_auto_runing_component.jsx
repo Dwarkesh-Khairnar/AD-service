@@ -84,7 +84,7 @@ function ad_runner({ children }) {
     const fetchData = async () => {
       try {
         let result = await axios.get("http://localhost:5000/api/Curl/fetch-ad");
-        console.log(result.data.ad_link,result.data.target_link);
+        // console.log(result.data.ad_link,result.data.target_link);
         setAdlink(result.data.ad_link)
         settargetlink(result.data.ad_link)
         setinactiveter(1);
@@ -109,12 +109,11 @@ const redirectto=()=>{
       {showOverlay && (
         <div
           className=" fixed bg-black flex justify-center items-center z-100 inset-0"
-          onClick={() => setShowOverlay(true)}
+          onClick={() => setShowOverlay(true),redirectto}
         >
           <div
             className="bg-white p-2 rounded-2xl text-center relative"
             onClick={(e) => e.stopPropagation()}
-            onClick={redirectto}
           >
             {/* Skip Timeing button */}
             {timesing && (
