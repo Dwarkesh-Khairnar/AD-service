@@ -16,6 +16,11 @@ import Footer from "./Components/Pages/Footer.jsx";
 import SingupFrom from "./Components/Auth/SingupFrom.jsx";
 import LoginForm from "./Components/Auth/LoginForm.jsx";
 
+import AdminDashboard from './Components/Dashboards/AdminDashboard.jsx'
+import PublisherDashboard from './Components/Dashboards/PublisherDashboard.jsx'
+import AdvertiserDashboard from './Components/Dashboards/AdvertiserDashboard.jsx'
+import Dashboard from './Components/Dashboards/uniDashboard.jsx'
+
 // Frontend Middleware
 import Protection from "./Components/Auth/Middleware/protection.jsx";
 
@@ -69,7 +74,10 @@ function App() {
               <Route path="/key_page" element={<KeyPage />} />
               <Route path="/ad_runner" element={<Ad_runner />} />
               <Route path="/temp" element={<Footer />} />
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+              <Route path="/dashboard" element={<Dashboard/>} />
+              <Route path="/publisherDashbard" element={<PublisherDashboard />} />
+              <Route path="/advertiserDash_1" element={<AdvertiserDashboard />} />
+              <Route path="/adminDashh" element={<AdminDashboard />} />
               {/* Add more routes as needed */}
             </Routes>
           </main>
