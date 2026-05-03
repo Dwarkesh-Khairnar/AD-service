@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from "react-router-dom";
+import Cookie from "js-cookie";
 
 function uniDashboard() {
     const Navigate = useNavigate();
@@ -11,7 +12,7 @@ function uniDashboard() {
             if (hasFetchedData.current) return; // Prevent multiple calls
 
             hasFetchedData.current = true; // Set the flag
-            const dashboardRole = localStorage.getItem("role")
+            const dashboardRole = Cookie.get("role")
             console.log(dashboardRole === "Admin");
 
             if (dashboardRole === "Admin") {

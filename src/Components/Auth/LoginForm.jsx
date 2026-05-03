@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Cookie from 'js-cookie'
 import lodingPage from "../loding";
 import axios from 'axios'
 
@@ -18,17 +19,15 @@ function LoginForm() {
       const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
       if (result.data.lenght === 0) setResponseMessage("Server not respond")
       // Store token in localStorage 
-      localStorage.setItem("token", result.data.secret)
+      Cookie.set("token", result.data.secret)
+      Cookie.set("role",result.data.role)
 
+      console.log(result);
+      
       setResponseMessage("Login successfull")
       setResponseColor({ color: "green" })
-
-      if (result.statusText) {
-        setTimeout(() => {
-          Navigate('/')
-          setloding(false)
-        }, 3000);
-      }
+      Navigate('/')
+      setloding(false)
     }
     catch (error) {
       setResponseMessage(error.response.data.message)
@@ -82,7 +81,7 @@ function LoginForm() {
               type="submit"
               className="w-full py-2 px-4 rounded-md text-white bg-amber-500 hover:bg-green-500"
             >
-              {loding ? <span className="positionDiv left-[50%]"> 
+              {loding ? <span className="positionDiv left-[50%]">
                 <span className="h-5 w-1 mr-2 bg-black rounded-full">.</span>
                 <span className="h-5 w-1 mr-2 bg-black rounded-full animate-blink">.</span>
                 <span className="h-5 w-1 bg-black rounded-full animate-leftmove"></span> </span> : "login"}                                                                               {/* Temp loding */}
