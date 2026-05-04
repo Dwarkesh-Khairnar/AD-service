@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Database, Edit3, Trash2, Search, ShieldCheck } from 'lucide-react';
 import axios from 'axios';
-
+import Loding from "../loding.jsx";
 const AdminDashboard = () => {
   const [ads, setAds] = useState([]);
-  const [inactiveter, setinactiveter] = useState(0)
   const hasFetchedData = useRef(false);
+  const [loding, setloding] = useState(false)
 
   useEffect(() => {
     const getUserData = async () => {
@@ -16,19 +16,22 @@ const AdminDashboard = () => {
         const response = await axios.get("http://localhost:5000/api/dashboard/adminDash")
         // const result = await response.json();
         setAds(response.data.data);
-        setinactiveter(1);
+        setloding(true)
+
       } catch (error) {
         console.log('error', error)
       }
       finally {
+        setloding(false)
       }
 
     }
     getUserData();
-  }, [inactiveter])
+  }, [])
 
   return (
     <div className="p-8 bg-gray-900 min-h-screen text-slate-100">
+      {loding && <Loding />}
       <div className='mt-15'></div>
       <div className="flex items-center justify-between mb-8">
         <div>
@@ -59,7 +62,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-700">
-             {ads.map(ad => (
+            {ads.map(ad => (
               <tr key={ad.id} className="hover:bg-gray-700/30 transition-colors">
                 <td className="p-4 font-mono text-blue-400">{ad.id}</td>
                 <td className="p-4 font-medium">{ad.company_name}</td>
