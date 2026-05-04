@@ -4,10 +4,11 @@ import Header from "./Components/Pages/Header";
 import Hero from "./Components/Pages/Hero";
 import Schedule from "./Components/Pages/Schedule";
 import Plans from "./Components/Pages/Plans";
-import Services from "./Components/Pages/Services";
+// import Services from "./Components/Pages/Services";
 import Client from "./Components/Meeting components/Client_m_form.jsx";
 import Meetjoin from "./Components/Meeting components/join.jsx";
-import Loding from "./Components/loding.jsx";
+import Loding from "./Components/rightmoveloding.jsx";
+
 import Docs from './Components/Pages/Docs.jsx';
 import Ad_runner from './Components/Ads components/Ad_auto_runing_component.jsx';
 import AdUpload from "./Components/Ads Uploads/ad_upload.jsx";
@@ -23,9 +24,9 @@ import Dashboard from './Components/Dashboards/uniDashboard.jsx'
 
 // Frontend Middleware
 import Protection from "./Components/Auth/Middleware/protection.jsx";
+import { Contact } from "lucide-react";
 
 function App() {
-  const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,14 +42,6 @@ function App() {
 
 
   return (
-    //  <div>
-    //   <Temp/>
-    //    {/* <AdUpload/> */}
-    //    {/* <Fileuploade/> */}
-
-    // </div> 
-
-
 
     <Router>
       {loading ? (
@@ -61,23 +54,23 @@ function App() {
           <main className="">
             <Routes>
               <Route path="" element={<Hero />} />
-              <Route path="/services" element={<Services />} />
+              {/* <Route path="/services" element={<Services />} /> */}
               <Route path="/plans" element={<Plans />} />
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/meetjoin" element={<Meetjoin />} />
-              <Route path="/client" element={<Client />} />
+              <Route path="/client" element={<Protection><Client /></Protection>} />
               <Route path="/docs" element={<Docs />} />
-              <Route path="/contact" element={<Hero />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/adupload" element={<Protection><AdUpload /></Protection>} />
               <Route path="/singup" element={<SingupFrom />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/key_page" element={<KeyPage />} />
               <Route path="/ad_runner" element={<Ad_runner />} />
               <Route path="/temp" element={<Footer />} />
-              <Route path="/dashboard" element={<Dashboard/>} />
-              <Route path="/publisherDashbard" element={<PublisherDashboard />} />
-              <Route path="/advertiserDash_1" element={<AdvertiserDashboard />} />
-              <Route path="/adminDashh" element={<AdminDashboard />} />
+              <Route path="/dashboard" element={<Protection><Dashboard/></Protection>} />
+              <Route path="/publisherDashbard" element={<Protection><PublisherDashboard /></Protection>} />
+              <Route path="/advertiserDash_1" element={<Protection><AdvertiserDashboard /></Protection>} />
+              <Route path="/adminDashh" element={<Protection><AdminDashboard /></Protection>} />
               {/* Add more routes as needed */}
             </Routes>
           </main>
