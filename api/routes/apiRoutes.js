@@ -12,7 +12,7 @@ router.get('/get_data', async (req, res) => {
         const result = await client.query('select * from users limit 20;');
         res.status(200).json("User data"+result.rows)
     } catch (error) {
-        console.log("Error:", error);
+        // console.log("Error:", error);
         res.status(400).json({ massega: "Error:" + error })
     }
 });
