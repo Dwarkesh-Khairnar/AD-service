@@ -64,9 +64,11 @@ function Hero() {
       });
     }, RmoveSvgRef);
 
-    const TRM=gsap.context(()=>{
-      gsap.to()
-    })
+    // const TRM=gsap.context(()=>{
+    //   gsap.to(
+        
+    //   )
+    // })
     return () => ctx.revert() + op.revert() + svgEM.revert(); // clean up on unmount
   }, []);
 
@@ -78,7 +80,7 @@ function Hero() {
           className="absolute font-bold hidden text-amber-300 md:text-[42vh] md:top-0 md:inset-s-20 md:block mask-linear-from-amber-900"
           ref={scroll2}
         >
-         <span>SARVICE</span> 
+         <span>SERVICE</span> 
         </span>
         <span
           className=" fixed font-semibold flex top-30 left-13 text-7xl text-amber-300 md:hidden"
