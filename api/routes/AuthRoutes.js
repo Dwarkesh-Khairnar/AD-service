@@ -36,7 +36,7 @@ router.post("/singIn", async (req, res) => {
 
         if (result.rows.length === 0) return res.status(404).json({ "message": "User not found!" })
 
-            // console.log(result.rows[0].role);
+            console.log(result.rows[0].company_name);
             
         // Load hash from your password DB.
         const match = await bcrypt.compare(logInData.hast, result.rows[0].password)
@@ -50,7 +50,7 @@ router.post("/singIn", async (req, res) => {
 
         if (!token) return res.status(503).json({ "message": "Jwt service not work" })
 
-        return res.status(200).json({secret: token,role:result.rows[0].role, message: "Login successfull" })
+        return res.status(200).json({secret: token,role:result.rows[0].role,name:result.rows[0].company_name, message: "Login successfull" })
     } catch (error) {
         return res.status(500).json({ message: "error on login", Error: error })
     }
