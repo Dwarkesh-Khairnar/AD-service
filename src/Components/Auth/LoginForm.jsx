@@ -21,6 +21,7 @@ function LoginForm() {
       // Store token in localStorage 
       Cookie.set("token", result.data.secret)
       Cookie.set("role",result.data.role)
+      Cookie.set("name",result.data.name)
 
       console.log(result);
       

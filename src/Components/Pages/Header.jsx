@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import Cookie from 'js-cookie'
 
 const flex_hoverUnderlineClass =
   "relative cursor-pointer " +
@@ -21,6 +22,28 @@ function Header() {
       <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM64 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L96 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
     </svg>,
   ];
+  const trueFalse=useRef(false)
+  const [displayButton, setDisplayButton] = useState(true); // Changed to state
+const [value, setValue] = useState("")
+
+  const checkCookie= async()=>{
+    console.log(value);
+    
+    if (Cookie.get("name").slice('')[0]===undefined) {
+      setDisplayButton(true)
+    }else{
+      setValue(Cookie.get("name").slice('')[0])
+      setDisplayButton(false)
+    }
+  }
+
+useEffect(() => {
+  if (trueFalse.current) return;
+  trueFalse.current=true
+  checkCookie()
+
+}, [])
+
 
   const toggleSidenav = () => {
     setsidenav(!sidenav);
@@ -30,51 +53,52 @@ function Header() {
 
   return (
     <>
-      <header className="bg-transparent fixed w-screen z-15">
-      <div  className="w-screen mx-auto flex items-center font-semibold text text-gray-800 justify-between h-16 px-4">
-        <img src="https://i.ibb.co/tp0HGvKN/logo-ad.png" alt="Logo" className="w-13" />
-        <div>
-          <ul className="flex gap-3">
-            <li className={flex_hoverUnderlineClass}><Link to="/">Home</Link></li>
-            <li className={flex_hoverUnderlineClass}><Link to="/services">Services</Link></li>
-            <li className={flex_hoverUnderlineClass}><Link to="/plans">Plans</Link></li>
-            <li className={flex_hoverUnderlineClass}><Link to="/schedule">Meeting</Link></li>
-            {/* <li className={flex_hoverUnderlineClass}><Link to="/Contact">Contact</Link></li> */}
-            <li className={flex_hoverUnderlineClass}><Link to="/dashboard">Dashboard</Link></li>
-          </ul>
-        </div>
-        <div className="flex z-50">
-          <button className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">
-            <Link to={"/singup"} >SingUp</Link>
-            
-          </button>
-          <div
-            className="block md:hidden ml-2 w-6 cursor-pointer z-50"
-            onClick={toggleSidenav}
-            aria-expanded={sidenav}
-            aria-controls="sidenav"
-          >
-            {svgs[svg]}
+      <header className="bg-transparent fixed w-screen z-15 ">
+        <div className="w-screen mx-auto flex items-center font-semibold text text-gray-800 justify-between pt-1.5 px-4">
+          <img src="https://i.ibb.co/tp0HGvKN/logo-ad.png" alt="Logo" className="w-13" />
+          <div>
+            <ul className="flex gap-3">
+              <li className={flex_hoverUnderlineClass}><Link to="/">Home</Link></li>
+              <li className={flex_hoverUnderlineClass}><Link to="/services">Services</Link></li>
+              <li className={flex_hoverUnderlineClass}><Link to="/plans">Plans</Link></li>
+              <li className={flex_hoverUnderlineClass}><Link to="/schedule">Meeting</Link></li>
+              {/* <li className={flex_hoverUnderlineClass}><Link to="/Contact">Contact</Link></li> */}
+              <li className={flex_hoverUnderlineClass}><Link to="/dashboard">Dashboard</Link></li>
+            </ul>
           </div>
-        </div>
+          <div className="flex z-50">{
+            displayButton ? <button className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">
+              <Link to={"/singup"} >SingUp</Link>
+            </button> : <div className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-4 rounded-4xl">{value}</div>
+          }
+
+            <div
+              className="block md:hidden ml-2 w-6 mt-2 cursor-pointer z-50"
+              onClick={toggleSidenav}
+              aria-expanded={sidenav}
+              aria-controls="sidenav"
+            >
+              {svgs[svg]}
+            </div>
+          </div>
         </div>
       </header>
       <div
-      id="sidenav"
-      className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-900 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-full":"y-full opacity-0 z-50 h-0"}`}
+        id="sidenav"
+        className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-900 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-full" : "y-full opacity-0 z-50 h-0"}`}
       >
         <div className=" absolute top-0 w-full h-full bg-amber-400 z-10 border-l-2 border-white">
           <hr className="mt-10 text-transparent" />
 
-          <ul className={`mt-8 fixed inset-0 top-30 left-15 transform transition-all duration-400 ease-in-out ${sidenav ? "block":"hidden"}`}>
-            <li className="my-4 text-5xl font-bold text-amber-50 opacity-55"       onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
-            <li className="my-4 text-4xl font-stretch-50% text-gray-800"           onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
-            <li className="my-4 text-5xl"                                            onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
-            <li className="my-4 text-4xl font-extrabold opacity-50 text-amber-50"  onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule <br /> Meeting</Link>{" "}</li>
-            <li className="my-4 text-4xl"                                            onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
+          <ul className={`mt-8 fixed inset-0 top-30 left-15 transform transition-all duration-400 ease-in-out ${sidenav ? "block" : "hidden"}`}>
+            <li className="my-4 text-5xl font-bold text-amber-50 opacity-55" onClick={toggleSidenav}>{" "}<Link to="/">Home</Link>{" "}</li>
+            <li className="my-4 text-4xl font-stretch-50% text-gray-800" onClick={toggleSidenav}>{" "}<Link to="/services">Services</Link>{" "}</li>
+            <li className="my-4 text-5xl" onClick={toggleSidenav}>{" "}<Link to="/plans">Plans</Link>{" "}</li>
+            <li className="my-4 text-4xl font-extrabold opacity-50 text-amber-50" onClick={toggleSidenav}>{" "}<Link to="/schedule">Schedule <br /> Meeting</Link>{" "}</li>
+            <li className="my-4 text-4xl" onClick={toggleSidenav}>{" "}<Link to="/#">Ragistration</Link>{" "}</li>
             {/* <li className="my-4 text-4xl font-bold text-gray-800"                  onClick={toggleSidenav}>{" "}<Link to="/Contact">Contact</Link>{" "}</li> */}
-            <li className="my-4 text-4xl font-semibold opacity-55"                   onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
-           </ul>
+            <li className="my-4 text-4xl font-semibold opacity-55" onClick={toggleSidenav}>{" "}<Link to="/dashboard">Dashboard</Link></li>
+          </ul>
         </div>
       </div>
     </>
