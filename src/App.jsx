@@ -10,8 +10,8 @@ import Meetjoin from "./Components/Meeting components/join.jsx";
 import Loding from "./Components/rightmoveloding.jsx";
 
 import Docs from './Components/Pages/Docs.jsx';
-import Ad_runner from './Components/Ads components/Ad_auto_runing_component.jsx';
-import AdUpload from "./Components/Ads Uploads/ad_upload.jsx";
+import Ad_runner from './Components/Ads components/Ads snippets/Ad_auto_runing_component.jsx';
+import AdUpload from "./Components/Ads components/Ads Uploads/ad_upload.jsx";
 import KeyPage from "./Components/Auth/Key.jsx";
 import Footer from "./Components/Pages/Footer.jsx";
 import SingupFrom from "./Components/Auth/SingupFrom.jsx";
