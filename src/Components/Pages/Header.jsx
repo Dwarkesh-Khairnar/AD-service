@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Cookie from 'js-cookie'
 
@@ -22,27 +22,26 @@ function Header() {
       <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM64 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L96 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
     </svg>,
   ];
-  const trueFalse=useRef(false)
+  const trueFalse = useRef(false)
   const [displayButton, setDisplayButton] = useState(true); // Changed to state
-const [value, setValue] = useState("")
+  const [value, setValue] = useState("")
 
-  const checkCookie= async()=>{
-    console.log(value);
-    
-    if (Cookie.get("name").slice('')[0]===undefined) {
-      setDisplayButton(true)
-    }else{
-      setValue(Cookie.get("name").slice('')[0])
-      setDisplayButton(false)
+  
+  useEffect(() => {
+    if (trueFalse.current) return;
+    trueFalse.current = true
+    const checkCookie = async () => {
+  
+      if (Cookie.get("name").slice('')[0] === undefined) {
+        setDisplayButton(true)
+      } else {
+        setValue(Cookie.get("name").slice('')[0])
+        setDisplayButton(false)
+      }
     }
-  }
+    checkCookie()
 
-useEffect(() => {
-  if (trueFalse.current) return;
-  trueFalse.current=true
-  checkCookie()
-
-}, [])
+  }, [displayButton])
 
 
   const toggleSidenav = () => {
