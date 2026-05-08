@@ -26,12 +26,12 @@ function Header() {
   const [displayButton, setDisplayButton] = useState(true); // Changed to state
   const [value, setValue] = useState("")
 
-  
+
   useEffect(() => {
     if (trueFalse.current) return;
     trueFalse.current = true
     const checkCookie = async () => {
-  
+
       if (Cookie.get("name").slice('')[0] === undefined) {
         setDisplayButton(true)
       } else {
@@ -65,14 +65,26 @@ function Header() {
               <li className={flex_hoverUnderlineClass}><Link to="/dashboard">Dashboard</Link></li>
             </ul>
           </div>
-          <div className="flex z-50">{
-            displayButton ? <button className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-3 rounded-bl-md">
-              <Link to={"/singup"} >SingUp</Link>
-            </button> : <div className="bg-yellow-500 hover:bg-amber-600 text-white py-2 px-4 rounded-4xl">{value}</div>
-          }
+          <div className="flex items-center gap-2">
+            <Link to="/schedule" className="hidden lg:block text-white text-xs font-black border-b-2 border-amber-400 pb-1 hover:text-amber-400 transition-all">
+              BOOK A MEETING
+            </Link>
+
+            {displayButton ? (
+              <Link
+                to="/singup"
+                className="bg-amber-400 hover:bg-white md:mt-0 mt-1.5 hover:text-amber-600 text-teal-900 font-black px-6 py-2.5 rounded-full text-sm transition-all shadow-lg active:scale-95"
+              >
+                SIGN UP
+              </Link>
+            ) : (
+              <div className="bg-white/20 backdrop-blur-md text-white mt-2 py-2 px-6 rounded-full border border-white/30 font-bold">
+                {value}
+              </div>
+            )}
 
             <div
-              className="block md:hidden ml-2 w-6 mt-2 cursor-pointer z-50"
+              className="block md:hidden ml-2 w-6 mt-1 cursor-pointer z-50"
               onClick={toggleSidenav}
               aria-expanded={sidenav}
               aria-controls="sidenav"
@@ -84,9 +96,9 @@ function Header() {
       </header>
       <div
         id="sidenav"
-        className={`fixed inset-0 top-0 left-0 z-10 transform transition-all duration-900 ease-in-out ${sidenav ? " y-0 -z-1 opacity-100 h-full" : "y-full opacity-0 z-50 h-0"}`}
-      >
-        <div className=" absolute top-0 w-full h-full bg-amber-400 z-10 border-l-2 border-white">
+        className={`fixed inset-0 top-0 left-0 z-12 transform transition-all duration-900 ease-in-out ${sidenav ? "translate-y-0 opacity-100 h-full" : "-translate-y-full opacity-0 h-0"
+          }`}>
+        <div className=" absolute top-0 w-full h-full bg-amber-400 z-12 border-l-2 border-white">
           <hr className="mt-10 text-transparent" />
 
           <ul className={`mt-8 fixed inset-0 top-30 left-15 transform transition-all duration-400 ease-in-out ${sidenav ? "block" : "hidden"}`}>
