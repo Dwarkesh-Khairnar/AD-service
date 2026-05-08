@@ -19,9 +19,11 @@ function LoginForm() {
       const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
       if (result.data.lenght === 0) setResponseMessage("Server not respond")
       // Store token in localStorage 
+    
       Cookie.set("token", result.data.secret)
       Cookie.set("role",result.data.role)
       Cookie.set("name",result.data.name)
+      Cookie.set("id",result.data.id)
 
       console.log(result);
       
