@@ -5,10 +5,11 @@ import dotenv from 'dotenv';
 import bodyParser from "body-parser";
 
 // Files/Routes
-import apiRoutes from "./routes/apiRoutes.js"
+import apiRoutes from "./routes/keyRoutes.js"
 import uploadRoutes from "./routes/upload.js"
 import AuthRoutes from './routes/AuthRoutes.js'
 import dashboard from "./routes/dashboardRoutes.js";
+import ads from "./routes/adsRoutes.js";
 
 // Middleware
 import authenticateToken from "./Middleware/authMiddleware.js";
@@ -48,6 +49,7 @@ app.use('/api/Auth', AuthRoutes);
 app.use('/api/curl', apiRoutes);
 app.use('/api/uvideo',authenticateToken, uploadRoutes);
 app.use('/api/dashboard', dashboard);
+app.use('/api/ad', ads);
 
 // THIS IS THE SECRET:
 if (process.env.NODE_ENV !== 'production') {
