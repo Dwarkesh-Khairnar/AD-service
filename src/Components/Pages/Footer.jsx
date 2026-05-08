@@ -52,6 +52,9 @@ setYear(new Date().getFullYear())
                     href="/advertiser-apply" className="bg-amber-500 text-[#012033] md:py-2 md:px-3 px-2 py-1 rounded-xl md:font-bold md:ml-2 ">Advertiser Signup</a></div>
         </div>
     </div>
+    <div className=" text-slate-500 mt-10text-center text-sm">
+        © 2026 Ad Service Provider. All rights reserved. Built with GSAP & React.
+      </div>
 </footer>
 
   )
