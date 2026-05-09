@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 
         hasFetchedData.current = true; // Set the flag
         try {
-          const response = await axios.get("http://localhost:5000/api/dashboard/adminDash") // fetch data form db
+          const response = await axios.get("/api/dashboard/adminDash") // fetch data form db
           // const result = await response.json();
           setAds(response.data.data);
           setloding(true)
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
       // Optionally, make an API call to delete the ad from the database
       // Fetch API call example (uncomment to use):
       // fetch(`/api/ads/${adId}`, { method: 'DELETE' })
-      axios.get(`http://localhost:5000/api/dashboard/ads/${adId}`)
+      axios.get(`/api/dashboard/ads/${adId}`)
         .then((response) => {
           if (response.ok) {
             // Update local state

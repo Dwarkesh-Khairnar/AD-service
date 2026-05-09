@@ -16,7 +16,7 @@ function LoginForm() {
 
     try {
       setloding(true);
-      const result = await axios.post("http://localhost:5000/api/Auth/singIn", data)
+      const result = await axios.post("/api/Auth/singIn", data)
       if (result.data.lenght === 0) setResponseMessage("Server not respond")
       // Store token in localStorage 
     

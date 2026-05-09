@@ -13,11 +13,11 @@ function uniDashboard() {
 
             hasFetchedData.current = true; // Set the flag
             const dashboardRole = Cookie.get("role")
-            console.log(dashboardRole === "Admin");
+            // console.log(dashboardRole === "Admin");
 
             if (dashboardRole === "Admin") {
                 Navigate('/adminDashh')
-            } else if (dashboardRole === "publisher") {
+            } else if (dashboardRole === "Publisher") {
                 Navigate('/publisherDashbard')
             } else {
                 Navigate('/advertiserDash_1')
@@ -26,7 +26,7 @@ function uniDashboard() {
         getUserData()
     }, [])
     return (
-        <div>reidirect</div>
+        <div>Samething is wrong on Dashboard redirection</div>
     )
 }
 

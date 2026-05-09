@@ -83,7 +83,7 @@ function ad_runner({ children }) {
   if (showOverlay && inactiveter === 0) {
     const fetchData = async () => {
       try {
-        let result = await axios.get("http://localhost:5000/api/curl/fetch-ad");
+        let result = await axios.get("/api/curl/fetch-ad");
         console.log(result);
         setAdlink(result.data.ad_link)
         settargetlink(result.data.ad_link)

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function SingupFrom() {
   const [responseMessage, setResponseMessage] = useState("");
+  const [responseColor, setResponseColor] = useState({});
   const [FormData, setformData] = useState({
     company_name: "",
     mail: "",
@@ -13,20 +14,24 @@ function SingupFrom() {
     Confirm_password: "",
     key_words: "",
   });
+  const Navigate=useNavigate();
 
   const SubmitHandel = (event) => {
     event.preventDefault();
     // console.log('FormData Form Frontend:', FormData)
 
     axios
-      .post("http://localhost:5000/api/Auth/singUp", FormData)
+      .post("/api/Auth/singUp", FormData)
       .then((response) => {
         setResponseMessage(
-          "User created successfully!" + JSON.stringify(response.data)
+          "User created successfully!"
+          // + JSON.stringify(response.data)
         );
+        setResponseColor({ color: "green" })
       })
       .catch((err) => {
-        setResponseMessage("Error"+ err);
+        setResponseMessage("Error" + err);
+        setResponseColor({ color: "red" })
       });
   };
 
@@ -38,6 +43,10 @@ function SingupFrom() {
       [name]: value,
     }));
   };
+
+  const redirect=()=>{
+    Navigate('/login')
+  }
 
   return (
     <>
@@ -108,14 +117,27 @@ function SingupFrom() {
               >
                 Role
               </label>
-              <input
+              <select type="select"
+                id="Role"
+                className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter your Role"
+                name="role"
+                required
+                onChange={valueAddHandelr}>
+                <option value="Publisher" selected>Publisher</option>
+                <option value="Advertiser">Advertiser</option>
+                {/* <option value="Admin" disabled>Admin</option> */}
+              </select>
+
+
+              {/* <input
                 type="Role"
                 id="Role"
                 className="w-full px-4 py-2 mt-1 text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your Role"
                 name="role"
                 onChange={valueAddHandelr}
-              />
+              /> */}
             </div>
             {/* Passwords Field */}
             <div>
@@ -169,6 +191,7 @@ function SingupFrom() {
               <button
                 type="submit"
                 className="w-full px-4 py-2 text-white bg-amber-500 rounded-md hover:bg-green-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                onClick={redirect}
               >
                 SingUp
               </button>
@@ -176,9 +199,9 @@ function SingupFrom() {
 
             {/*  temp response setup */}
             {/* replace with tost or notification banner */}
-          <p>
-            <span>{responseMessage}</span>
-          </p>
+            <p>
+              <span style={responseColor}>{responseMessage}</span>
+            </p>
           </form>
 
           <p className="text-sm text-center text-gray-600">
