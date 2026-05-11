@@ -64,7 +64,7 @@ function App() {
               <Route path="/adupload" element={<Protection><AdUpload /></Protection>} />
               <Route path="/singup" element={<SingupFrom />} />
               <Route path="/login" element={<LoginForm />} />
-              <Route path="/key_page" element={<KeyPage />} />
+              <Route path="/key_page" element={<Protection><KeyPage /></Protection>} />
               <Route path="/ad_runner" element={<Ad_runner />} />
               <Route path="/temp" element={<Footer />} />
               <Route path="/dashboard" element={<Protection><Dashboard/></Protection>} />
@@ -85,7 +85,7 @@ export default App;
 
 // const handleHeroSubmit = async (data) => {
 //   try {
-//     const res = await fetch("http://localhost:5000/api/submit", {
+//     const res = await fetch("/api/submit", {
 //       method: "POST",
 //       headers: { "Content-Type": "application/json" },
 //       body: JSON.stringify(data),
