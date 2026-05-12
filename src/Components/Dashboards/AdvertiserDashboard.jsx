@@ -1,6 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { UploadCloud, Eye, TrendingUp } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const sellerData = [
   { category: 'Video', count: 15 },
@@ -13,8 +14,14 @@ const AdvetiserDashboard = () => {
   return (
     <div className="p-8 bg-slate-50 min-h-screen">
       <div className='mt-15'></div>
-      <h2 className="text-2xl font-bold text-slate-800 mb-8">Ad-Seller Console</h2>
-      
+      <div className='flex items-center justify-between'>
+        <h2 className="text-2xl font-bold text-slate-800 mb-8">Advertiser Console</h2>
+        <span className='flex gap-1.5'>
+          <Link to="/adupload"><div className="text-sm font-medium text-white bg-amber-500 px-4 py-2 rounded-full shadow-sm border hover:bg-amber-600" >+ NEW</div></Link>
+          <div className="text-sm font-medium text-slate-500 bg-white px-4 py-2 rounded-full shadow-sm border">Account</div>
+        </span>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {[
           { label: "Ads Uploaded", val: "114", icon: <UploadCloud />, color: "bg-blue-500" },
@@ -38,7 +45,7 @@ const AdvetiserDashboard = () => {
             <BarChart data={sellerData}>
               <XAxis dataKey="category" />
               <YAxis />
-              <Tooltip cursor={{fill: '#f8fafc'}}/>
+              <Tooltip cursor={{ fill: '#f8fafc' }} />
               <Bar dataKey="count" fill="#6366f1" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
