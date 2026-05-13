@@ -33,7 +33,10 @@ it is therd party ads netwerking patheform like
 - ##  Cache
     - Redis  - Open source
 - ## Storege 
+    ### video
     - Mega.nz - not good but good for small project and with 20GB
+    ### images
+    - imbb free plan - not good but good for small project
 
 - ## Database
     - PostgraSql - Free plan of Ai**n
