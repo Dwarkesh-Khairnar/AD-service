@@ -12,7 +12,7 @@ router.use(cors());
 
 // Multer temp folder
 const upload = multer({
-   storage: multer.memoryStorage() 
+  dest: path.join(process.cwd(), "tmp_uploads/")
 });
 
 // API: Upload video to MEGA
@@ -76,7 +76,7 @@ router.post("/upload-video", upload.any(), async (req, res) => {
 
     const Embedlink = `https://mega.nz/embed/${link.split('/')[4]}!1a1m`;   //Link modify to Embed link
 
-    console.log("Link:" + link, "Embedlink :" + Embedlink);
+    // console.log("Link:" + link, "Embedlink :" + Embedlink);
 
     // Database Link Adding section
     try {
