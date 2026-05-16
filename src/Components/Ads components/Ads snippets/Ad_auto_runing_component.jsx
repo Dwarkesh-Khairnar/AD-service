@@ -83,10 +83,9 @@ function ad_runner({ children }) {
   if (showOverlay && inactiveter === 0) {
     const fetchData = async () => {
       try {
-        let result = await axios.get("/api/curl/fetch-ad");
-        console.log(result);
+        let result = await axios.get("/api/ad/fetch-ad");
         setAdlink(result.data.ad_link)
-        settargetlink(result.data.ad_link)
+        settargetlink(result.data.target_link)
         setinactiveter(1);
       } catch (err) {
         console.error(err);
@@ -144,10 +143,10 @@ const redirectto=()=>{
                 width={"100%"}
                 height={"100%"}
                 frameborder="0"
-                // src="https://mega.nz/embed/Hcs2UQob#Qphj3vweCFAj1ATE_y2nrx3qsrIpFVnJ4erIxhbQtvo!1a1m"
-                // src="https://mega.nz/file/Hcs2UQob#Qphj3vweCFAj1ATE_y2nrx3qsrIpFVnJ4erIxhbQtvo"
+                // src={`https://mega.nz/embed/${adlink}!1a1m`}               // Database spass sever
                 src={adlink}
                 allowfullscreen
+                allow="autoplay"
               ></iframe>
             </div>
           </div>
