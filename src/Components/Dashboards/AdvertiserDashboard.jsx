@@ -1,16 +1,45 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { UploadCloud, Eye, TrendingUp } from 'lucide-react';
 import { Link } from "react-router-dom";
+import Cookie from "js-cookie";
+import axios from "axios";
 
-const sellerData = [
-  { category: 'Video', count: 15 },
-  { category: 'Banner', count: 45 },
-  { category: 'Popup', count: 22 },
-  { category: 'Sidebar', count: 32 },
-];
+
 
 const AdvetiserDashboard = () => {
+  
+  const sellerData = [
+    { category: 'Video', count: 15 },
+    { category: 'Banner', count: 45 },
+    { category: 'Popup', count: 22 },
+    { category: 'Sidebar', count: 32 },
+  ];
+  
+  const runTest = useRef(false)
+  const [uplodesads, setUplodesads] = useState(0)
+
+  useEffect(() => {
+    if (runTest.current) return;
+    runTest.current = true;
+
+    const getAdvertiserData = async () => {
+      const id = Cookie.get("id");
+      try {
+        const result = await axios.get("/api/dashboard/advertiserDash", { params: { id } });
+        console.log(result.data.data);
+
+        setUplodesads(result.data.data.length)
+
+        if (!result.data || result.data.length === 0) setResponseMessage("Server not respond");
+      } catch (error) {
+        console.error("Error fetching ads datas:", error.response ?? error);
+      }
+    };
+
+    getAdvertiserData();
+  }, []);
+
   return (
     <div className="p-8 bg-slate-50 min-h-screen">
       <div className='mt-15'></div>
@@ -24,9 +53,9 @@ const AdvetiserDashboard = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {[
-          { label: "Ads Uploaded", val: "114", icon: <UploadCloud />, color: "bg-blue-500" },
-          { label: "Total Displays", val: "892.4k", icon: <Eye />, color: "bg-purple-500" },
-          { label: "Revenue Share", val: "$1,240", icon: <TrendingUp />, color: "bg-emerald-500" }
+          { label: "Ads Uploaded", val: `${uplodesads}`, icon: <UploadCloud />, color: "bg-blue-500" },
+          { label: "Total Displays", val: `0`, icon: <Eye />, color: "bg-purple-500" },
+          { label: "Revenue Share", val: "₹0", icon: <TrendingUp />, color: "bg-emerald-500" }
         ].map((stat, i) => (
           <div key={i} className="bg-white p-6 rounded-xl shadow-sm border flex items-center gap-4">
             <div className={`${stat.color} p-3 rounded-lg text-white`}>{stat.icon}</div>
