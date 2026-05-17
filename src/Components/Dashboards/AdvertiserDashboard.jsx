@@ -18,7 +18,8 @@ const AdvetiserDashboard = () => {
   
   const runTest = useRef(false)
   const [uplodesads, setUplodesads] = useState(0)
-
+  const [displays, setDisplays] = useState(0)
+  let count = 0
   useEffect(() => {
     if (runTest.current) return;
     runTest.current = true;
@@ -30,6 +31,12 @@ const AdvetiserDashboard = () => {
         console.log(result.data.data);
 
         setUplodesads(result.data.data.length)
+
+       await result.data.data.forEach(i => {
+          count += i.apparencies  
+        });
+        console.log(count);
+        setDisplays(count)
 
         if (!result.data || result.data.length === 0) setResponseMessage("Server not respond");
       } catch (error) {
@@ -54,7 +61,7 @@ const AdvetiserDashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {[
           { label: "Ads Uploaded", val: `${uplodesads}`, icon: <UploadCloud />, color: "bg-blue-500" },
-          { label: "Total Displays", val: `0`, icon: <Eye />, color: "bg-purple-500" },
+          { label: "Total Displays", val: `${displays}`, icon: <Eye />, color: "bg-purple-500" },
           { label: "Revenue Share", val: "₹0", icon: <TrendingUp />, color: "bg-emerald-500" }
         ].map((stat, i) => (
           <div key={i} className="bg-white p-6 rounded-xl shadow-sm border flex items-center gap-4">
